@@ -1,0 +1,49 @@
+.privacy {
+  &-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -2.4rem;
+  }
+  &-sidebar {
+    position: sticky;
+    top: 9rem;
+    ul {
+      margin: -1.5rem;
+    }
+    a {
+      display: block;
+      padding: 1.5rem;
+      @include fz(20);
+      font-weight: bold;
+      &.current-menu-item {
+        color: $c-blu2;
+      }
+      @include hover() {
+        background-color: $c-prim;
+        color: #fff;
+      }
+      &:active {
+        background-color: $c-prim;
+        color: #fff;
+      }
+    }
+  }
+}
+@include max(1024px) {
+  .privacy {
+    &-wrap {
+      .col-3,
+      .col-9 {
+        width: 100%;
+      }
+      .col-9 {
+        margin-bottom: 5rem;
+      }
+    }
+    &-sidebar {
+      a {
+        padding: 1rem 1.5rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+.leader {
+  &-title {
+    text-align: center;
+    margin-bottom: 7rem;
+  }
+  &-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -2.4rem -5rem;
+  }
+  &-item {
+    display: flex;
+    margin-bottom: 5rem;
+  }
+  &-img {
+    width: calc(50% - 4.8rem);
+    margin-right: auto;
+  }
+  &-info {
+    width: 50%;
+    align-self: flex-end;
+  }
+  &-txt {
+    margin-bottom: 1.2rem;
+    @include lc(5);
+  }
+  &-name {
+    padding-top: 0.5rem;
+    position: relative;
+    display: block;
+    color: $c-blu5;
+    font-weight: 600;
+    @include fz(20);
+    &::after {
+      content: '';
+      display: block;
+      width: 8rem;
+      height: 2px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $c-blu5;
+    }
+  }
+  &-role {
+    font-size: 1.6rem;
+  }
+}
+@include max(1280px) {
+  .leader {
+    &-txt {
+      font-size: 1.6rem;
+    }
+    &-img {
+      width: calc(40% - 2rem);
+      margin-right: auto;
+    }
+    &-info {
+      width: 60%;
+      align-self: flex-end;
+    }
+  }
+}
+@include max(768px) {
+  .leader {
+    &-title {
+      text-align: left;
+      margin-bottom: 4rem;
+    }
+    &-wrap {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+      margin: 0;
+      white-space: nowrap;
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+      .col-6 {
+        width: 25rem;
+        margin-bottom: 0;
+        padding: 0;
+        margin-right: 2.4rem;
+        display: inline-block;
+      }
+    }
+    &-item {
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+    &-txt {
+      font-size: 1.6rem;
+    }
+    &-img {
+      width: 100%;
+      margin-right: auto;
+      margin-bottom: 2.4rem;
+    }
+    &-info {
+      white-space: normal;
+      width: 100%;
+      align-self: flex-end;
+    }
+  }
+}

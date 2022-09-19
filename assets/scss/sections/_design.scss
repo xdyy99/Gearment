@@ -1,0 +1,218 @@
+.design {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  &-wrap {
+    display: flex;
+    align-items: center;
+    margin: 0 -2.4rem;
+    position: relative;
+  }
+  &-title {
+    margin-bottom: 5.3rem;
+  }
+  &-txt {
+    margin-bottom: 5.3rem;
+    max-width: 56rem;
+  }
+  .decor-box {
+    position: absolute;
+    pointer-events: none;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    background-color: $c-light;
+    @include vwbox(99);
+  }
+}
+.design-small {
+  .design {
+    &-wrap {
+      margin: 0;
+      background-color: $c-light;
+      padding: 9rem 14rem;
+    }
+  }
+  .decor-box {
+    background-color: $c-blu2;
+    @include vwbox(144);
+  }
+}
+.drag {
+  &-wrap {
+    position: relative;
+    &.grab-cursor {
+      &:active {
+        cursor: grabbing;
+      }
+    }
+    &.active {
+      &:active {
+        cursor: unset;
+      }
+      .drag {
+        &-item {
+          transition: 0.15s linear;
+          opacity: 0;
+          pointer-events: none;
+        }
+        &-img {
+          &:first-child {
+            opacity: 0;
+          }
+          &:last-child {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  &-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    cursor: grab;
+    &.grabbing {
+      pointer-events: none;
+      .drag-tooltip {
+        opacity: 0;
+      }
+    }
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  &-icon {
+    display: block;
+    border-radius: 14px;
+    pointer-events: none;
+  }
+  &-tooltip {
+    position: absolute;
+    top: calc(100% + 3.2rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    text-transform: uppercase;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 2px solid $c-pri;
+    border-radius: 4px;
+    line-height: 1;
+    padding: 1.9rem 3.2rem 1.7rem;
+    transition: 0.2s linear;
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: 1.5rem solid transparent;
+      border-bottom: 1.5rem solid $c-pri;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+    }
+    &::after {
+      border-bottom-color: #fff;
+      transform: translate(-50%, 3px);
+    }
+  }
+  &-img {
+    display: block;
+    width: 100%;
+    pointer-events: none;
+    transition: 0.15s linear;
+    &:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  }
+}
+@include max(1440px) {
+  .design {
+    &-title {
+      margin-bottom: 3rem;
+    }
+    &-txt {
+      margin-bottom: 3rem;
+    }
+  }
+  .drag {
+    &-tooltip {
+      padding: 1.5rem 2.5rem 1.3rem;
+      font-size: 1.6rem;
+    }
+  }
+}
+@include max(1280px) {
+  .design-small {
+    .design {
+      &-wrap {
+        padding: 3rem 6rem;
+        .col-8 {
+          width: 50%;
+        }
+        .col-4 {
+          width: 50%;
+        }
+      }
+    }
+  }
+  .drag {
+    &-tooltip {
+      padding: 1rem 1rem 0.8rem;
+      font-size: 1.2rem;
+      width: 150%;
+      display: block;
+      white-space: unset;
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+}
+@include max(768px) {
+  .design {
+    &-wrap {
+      flex-wrap: wrap;
+      .col-6 {
+        width: 100%;
+        margin-bottom: 6rem;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .design-small {
+    .design {
+      &-wrap {
+        padding: 3rem 0;
+        .col-8 {
+          width: 100%;
+          margin-bottom: 6rem;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        .col-4 {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .drag {
+    &-item {
+      max-width: 15rem;
+    }
+    &-tooltip {
+      width: 100%;
+    }
+  }
+}
+@include max(480px) {
+}

@@ -1,0 +1,308 @@
+.comment {
+  background-color: $c-light2;
+  position: relative;
+  z-index: 1;
+  &-title {
+    margin-bottom: 4rem;
+  }
+
+  &-list {
+    border-bottom: 1px solid #b8b8b8;
+    margin-bottom: 3rem;
+  }
+  &-item {
+    margin-bottom: 3rem;
+  }
+  &-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    .ava {
+      @include cir(6rem);
+      margin-right: 1.2rem;
+      overflow: hidden;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .info {
+    }
+    .name {
+      font-size: 1.8rem;
+      text-transform: capitalize;
+      font-weight: 600;
+    }
+    .date {
+      font-size: 1.6rem;
+    }
+  }
+  &-content {
+    background-color: #fff;
+    padding: 2rem 5rem;
+    border-radius: 1rem;
+  }
+  &-form {
+    &-wrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    &-ava {
+      @include cir(8rem);
+      overflow: hidden;
+      margin-right: 5rem;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-inp {
+      display: block;
+      width: 100%;
+      padding: 2.5rem 3.5rem 2.3rem;
+      max-width: calc(100% - 13rem);
+      background-color: #fff;
+      border: 1px solid #b8b8b8;
+      border-radius: 999px;
+    }
+    .btn-sec {
+      display: block;
+      margin-left: auto;
+      font-size: 1.6rem;
+      padding: 1rem 2rem;
+    }
+  }
+  .col-8 {
+    margin: 0 auto;
+    padding: 0;
+  }
+  .decor-box {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    bottom: 100%;
+    left: 0;
+    @include vwbox(144);
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: $c-blu2;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &::after {
+      top: 100%;
+      left: 100%;
+      width: 66%;
+      height: 66%;
+      background-color: $c-pri;
+      opacity: 0.8;
+    }
+  }
+  .comment-edit-link,
+  .comment-reply-link,
+  #comments-title,
+  .logged-in-as,
+  .comment-reply-title,
+  .comment-form-comment label {
+    display: none;
+  }
+  .form-submit {
+    input {
+      display: inline-block;
+      position: relative;
+      padding: 2.3rem 4.8rem 2.1rem;
+      cursor: pointer;
+      user-select: none;
+      appearance: none;
+      background-color: $c-pri;
+      border: 2px solid $c-pri;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 999px;
+      transition: 0.2s linear;
+      @include fz(20);
+      @include hover {
+        background-color: $c-yel;
+        border-color: $c-yel;
+        color: $c-blu5;
+      }
+      &:active {
+        background-color: $c-yel;
+        border-color: $c-yel;
+        color: $c-blu5;
+      }
+      @include max(1440px) {
+        padding: 1.9rem 4rem 1.7rem;
+      }
+      @include max(1280px) {
+        padding: 1.5rem 3rem 1.3rem;
+      }
+      @include max(768px) {
+        padding: 1rem 2.4rem;
+      }
+      display: block;
+      margin-left: auto;
+      font-size: 1.6rem;
+      padding: 1rem 2rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-color: $c-pri;
+      color: $c-pri;
+      @include hover {
+        background-color: $c-prim;
+        border-color: $c-prim;
+        color: #fff;
+      }
+      &:active {
+        background-color: $c-prim;
+        border-color: $c-prim;
+        color: #fff;
+      }
+    }
+  }
+
+  .comment-form-comment textarea {
+    display: block;
+    width: 100%;
+    padding: 2.5rem 3.5rem 2.3rem;
+    background-color: #fff;
+    border: 1px solid #b8b8b8;
+    border-radius: 1rem;
+    resize: vertical;
+    height: 15rem;
+    margin-bottom: 2rem;
+    transition: 0.2s linear;
+    &:focus {
+      border-color: $c-pri;
+    }
+  }
+  .comment-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    img {
+      display: block;
+      border-radius: 999px;
+      @include cir(6rem);
+      margin-right: 2rem;
+      object-fit: cover;
+    }
+    cite {
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    time {
+      font-size: 1.6rem;
+    }
+  }
+  .comment_content {
+    background-color: #fff;
+    padding: 2rem 5rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+  }
+  .commentlist {
+    border-bottom: 1px solid #b8b8b8;
+    margin-bottom: 5rem;
+  }
+  .comment-notes {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .comment-form-url,
+  .comment-form-email,
+  .comment-form-author {
+    input {
+      display: block;
+      margin: 0.5rem 0 1rem;
+      background-color: #fff;
+      width: 100%;
+      padding: 1.2rem 1.5rem 1rem;
+      border: 1px solid #b8b8b8;
+      border-radius: 999px;
+      transition: 0.2s linear;
+      &:focus {
+        border-color: $c-pri;
+      }
+    }
+  }
+}
+@include max(768px) {
+  .comment {
+    &-title {
+      margin-bottom: 3rem;
+    }
+
+    &-author {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      .ava {
+        @include cir(4rem);
+        margin-right: 1.2rem;
+        overflow: hidden;
+      }
+      .name {
+        font-size: 1.6rem;
+      }
+      .date {
+        font-size: 1.4rem;
+      }
+    }
+    &-content {
+      padding: 2.4rem;
+    }
+    &-form {
+      &-wrap {
+        margin-bottom: 1rem;
+      }
+      &-ava {
+        @include cir(6rem);
+        margin-right: 2rem;
+      }
+      &-inp {
+        padding: 1.5rem 2.4rem 1.3rem;
+        max-width: calc(100% - 8rem);
+      }
+    }
+    .col-8 {
+      width: 100%;
+    }
+
+    .comment-form-comment textarea {
+      padding: 1.5rem 2.4rem 1.3rem;
+      height: 10rem;
+    }
+    .comment-author {
+      margin-bottom: 1rem;
+      img {
+        @include cir(4rem);
+        margin-right: 2rem;
+      }
+    }
+    .comment_content {
+      padding: 2.4rem;
+      margin-bottom: 2rem;
+    }
+    .commentlist {
+      margin-bottom: 2rem;
+    }
+  }
+}
+@include max(480px) {
+  .comment {
+    .comment_content {
+      padding: 1.2rem;
+    }
+  }
+}

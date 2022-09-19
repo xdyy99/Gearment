@@ -1,0 +1,350 @@
+.tab {
+  &-menu {
+    margin-bottom: 6rem;
+    &::-webkit-scrollbar-thumb {
+      background-color: $c-pri;
+    }
+    &-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-item {
+      padding: 1.5rem 6.6rem;
+      background-color: rgba(201, 233, 253, 1);
+      transition: 0.2s linear;
+      user-select: none;
+      cursor: pointer;
+      text-align: center;
+      &:first-child {
+        border-radius: 999px 0 0 999px;
+      }
+      &:last-child {
+        border-radius: 0 999px 999px 0;
+      }
+      @include hover() {
+        background-color: $c-prim;
+        color: #fff;
+      }
+      &.active {
+        background-color: $c-pri;
+        color: #fff;
+      }
+    }
+  }
+  &-board {
+    width: 100%;
+    position: relative;
+    &-item {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: translateY(3rem);
+      transition: 0.3s ease;
+      pointer-events: none;
+      &.active {
+        position: relative;
+        pointer-events: auto;
+        transition-delay: 0.3s;
+        transform: none;
+        opacity: 1;
+      }
+      .align-content {
+        padding: 4rem 8rem;
+        background-color: #fff;
+      }
+    }
+  }
+  &-list {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    li {
+      background-color: #fff;
+      width: calc(50% - 2.4rem);
+      margin-bottom: 2.4rem;
+      display: flex;
+      align-items: center;
+      padding: 2.5rem 8rem;
+    }
+    img {
+      @include sqr(3rem);
+      margin-right: 2.4rem;
+    }
+  }
+  &-care {
+    background-color: #fff;
+    padding: 6rem 10rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    &-item {
+      width: 25%;
+      text-align: center;
+      padding: 0 2.4rem;
+      img {
+        width: 8rem;
+        max-width: 40%;
+        display: block;
+        margin: 0 auto 2rem;
+      }
+    }
+  }
+  &-table {
+    margin-bottom: 3rem;
+    &::-webkit-scrollbar-thumb {
+      background-color: $c-pri;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .tt {
+      &-head {
+        background-color: rgba(201, 233, 253, 1) !important;
+        text-transform: capitalize;
+        font-weight: 600;
+        &-big {
+          text-align: center;
+          background-color: $c-light !important;
+        }
+      }
+      &-row {
+        display: flex;
+        padding: 0 9rem;
+        background-color: #fff;
+        border-bottom: 1px solid rgba(233, 234, 237, 1);
+      }
+      &-col {
+        padding: 1.5rem 1rem;
+        &:first-child {
+          font-weight: 600;
+        }
+      }
+    }
+    a {
+      color: rgba(129, 163, 70, 1);
+      @include hover() {
+        color: $c-prim;
+        text-decoration: underline;
+      }
+    }
+  }
+  &-size {
+    .tt-head {
+      text-transform: uppercase;
+    }
+    .tt-col {
+      width: calc(100% * 1 / 12);
+      &:first-child {
+        width: calc(100% * 3 / 12);
+      }
+    }
+  }
+  &-file {
+    .tt-col {
+      &:nth-child(1) {
+        width: 20%;
+      }
+      &:nth-child(2) {
+        width: 15%;
+      }
+      &:nth-child(3) {
+        width: 25%;
+      }
+      &:nth-child(4) {
+        width: 25%;
+      }
+      &:nth-child(5) {
+        width: 15%;
+      }
+    }
+  }
+  &-ship {
+    .tt-row {
+      &.tt-head-big {
+        .tt-col {
+          &:nth-child(1) {
+            width: 20%;
+          }
+          &:nth-child(2) {
+            width: 55%;
+            border-right: 2px solid #fff;
+          }
+          &:nth-child(3) {
+            width: 25%;
+          }
+        }
+      }
+      .tt-col {
+        &:nth-child(1) {
+          width: 20%;
+        }
+        &:nth-child(2) {
+          width: 10%;
+        }
+        &:nth-child(3) {
+          width: 10%;
+        }
+        &:nth-child(4) {
+          width: 15%;
+        }
+        &:nth-child(5) {
+          width: 10%;
+        }
+        &:nth-child(6) {
+          width: 10%;
+          border-right: 2px solid #fff;
+        }
+        &:nth-child(7) {
+          width: 10%;
+        }
+        &:nth-child(8) {
+          width: 15%;
+        }
+      }
+      &.tt-row-small {
+        .tt-col {
+          &:nth-child(1) {
+            width: 20%;
+          }
+          &:nth-child(2) {
+            width: 20%;
+          }
+          &:nth-child(3) {
+            width: 15%;
+          }
+          &:nth-child(4) {
+            width: 10%;
+          }
+          &:nth-child(5) {
+            width: 10%;
+            border-right: 2px solid #fff;
+          }
+          &:nth-child(6) {
+            width: 25%;
+
+            border-right: 0px solid #fff;
+          }
+        }
+      }
+    }
+  }
+}
+@include max(1440px) {
+  .tab {
+    font-size: 1.8rem;
+    &-menu {
+      margin-bottom: 4rem;
+      &-item {
+        padding: 1.5rem 3rem;
+      }
+    }
+    &-list {
+      li {
+        padding: 1.5rem 2.4rem;
+        width: calc(50% - 1.2rem);
+      }
+    }
+    &-care {
+      padding: 2.4rem;
+    }
+    &-table {
+      .tt {
+        &-row {
+          padding: 0 2.4rem;
+        }
+      }
+    }
+  }
+}
+@include max(1024px) {
+  .tab {
+    font-size: 1.6rem;
+    &-menu {
+      &-item {
+        padding: 1.2rem 2.4rem;
+      }
+    }
+    &-care {
+      &-item {
+        width: calc(100% / 3);
+      }
+    }
+    &-table {
+      .tt-head {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+@include max(768px) {
+  .tab {
+    font-size: 1.6rem;
+    &-menu {
+      max-width: 100%;
+      overflow-x: auto;
+      &-wrap {
+        min-width: max-content;
+      }
+      &-item {
+        padding: 1.2rem 2.4rem;
+
+        &:first-child {
+          border-radius: 0;
+        }
+        &:last-child {
+          border-radius: 0;
+        }
+      }
+    }
+    &-list {
+      li {
+        padding: 1.2rem;
+        width: 100%;
+      }
+    }
+    &-care {
+      padding: 2.4rem 0;
+      &-item {
+        width: 50%;
+      }
+    }
+    &-table {
+      max-width: 100%;
+      overflow-x: auto;
+      .tt-wrap {
+        width: 90rem;
+      }
+      .tt {
+        &-row {
+          font-size: 1.4rem;
+          padding: 0 1.4rem;
+        }
+        &-col {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
+@include max(480px) {
+  .tab {
+    &-list {
+      li {
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    &-care {
+      padding: 2.4rem 1.4rem;
+      &-item {
+        padding: 0 1rem;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

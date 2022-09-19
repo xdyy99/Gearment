@@ -1,0 +1,204 @@
+.contact {
+  &-banner {
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(1, 17, 113, 0.8);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+
+    &-title {
+      max-width: 98rem;
+      margin: 0 auto 3rem;
+    }
+    &-txt {
+      margin: 0 auto;
+      max-width: 98rem;
+    }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(1, 17, 113, 0.8);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .btn-pri {
+      margin-top: 4rem;
+      border-color: #fff;
+      @include hover() {
+        border-color: $c-blu5;
+      }
+    }
+    &-full {
+      padding: 10rem 0 40rem;
+      &::after {
+        background-color: rgba(1, 17, 113, 0.6);
+      }
+      .btn-pri {
+        border-color: $c-pri;
+        @include hover() {
+          border-color: $c-yel;
+        }
+      }
+    }
+  }
+
+  &-form {
+    background-color: $c-light2;
+    padding: 10rem 0;
+    &-wrap {
+      max-width: 98rem;
+      margin: 0 auto;
+    }
+    &-item {
+      margin-bottom: 2rem;
+      > br {
+        display: none;
+      }
+      &:last-child {
+        margin-top: 2rem;
+        margin-bottom: 0;
+      }
+    }
+    &-label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    &-select {
+      display: block;
+      width: 100%;
+      padding: 1.5rem 1.5rem 1.3rem;
+      border: 1px solid #fff;
+      background: url('../images/select-ic.svg') 95% 50%/2.4rem no-repeat #fff;
+      &:focus {
+        border-color: $c-pri;
+      }
+    }
+    &-mess,
+    &-inp {
+      display: block;
+      background-color: #fff;
+      width: 100%;
+      padding: 1.5rem 1.5rem 1.3rem;
+      border: 1px solid #fff;
+      &:focus {
+        border-color: $c-pri;
+      }
+    }
+    &-guide {
+      font-size: 1.6rem;
+    }
+    &-file {
+      position: relative;
+      width: 100%;
+      background-color: #fff;
+      margin-bottom: 1rem;
+      color: $c-blu5;
+      padding: 1.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: 0.2s linear;
+      cursor: pointer;
+      img {
+        @include sqr(3rem);
+        margin-right: 1rem;
+      }
+
+      @include hover() {
+        background-color: $c-yel;
+      }
+
+      input {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+    }
+    &-mess {
+      height: 26rem;
+    }
+    &-noti {
+      color: #d73232;
+    }
+    &-submit {
+      display: block;
+      &:read-only {
+        color: #fff;
+        @include hover() {
+          color: $c-blu5;
+        }
+      }
+    }
+  }
+
+  &-map {
+    background: url(../assets/images/map.gif) 50% 50%/ 10rem no-repeat #e3e3e3;
+    flex-grow: 1;
+    height: 65rem;
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+@include max(1024px) {
+  .contact {
+    &-form {
+      padding: 8rem 0;
+      &-wrap {
+        max-width: 70rem;
+      }
+    }
+    &-map {
+      height: 50rem;
+    }
+  }
+}
+@include max(768px) {
+  .contact {
+    &-form {
+      padding: 6rem 0;
+      &-wrap {
+        max-width: 48rem;
+      }
+      &-mess,
+      &-inp {
+        padding: 1rem 1.5rem 0.8rem;
+      }
+      &-mess {
+        height: 12rem;
+      }
+      &-submit {
+        margin: 0 auto;
+      }
+    }
+    &-banner {
+      text-align: left;
+      &-full {
+        padding: 10rem 0 30rem;
+      }
+    }
+    &-map {
+      height: 40rem;
+    }
+  }
+}
+@include max(480px) {
+  .contact {
+    &-map {
+      height: 30rem;
+    }
+  }
+}

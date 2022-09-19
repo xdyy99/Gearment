@@ -1,0 +1,41 @@
+.page404 {
+  padding: 20rem 0;
+  text-align: center;
+  background-color: $c-light2;
+  &-number {
+    @include fz(300);
+    font-weight: 600;
+    position: relative;
+    color: $c-blu2;
+    line-height: 1;
+    img {
+      position: absolute;
+      max-width: 20%;
+      top: 0;
+      left: 50%;
+      transform: translate(-40%, -50%);
+    }
+  }
+  &-title {
+    @include fz(90);
+    font-weight: 600;
+    margin-bottom: 6rem;
+    line-height: 1;
+  }
+}
+@include max(1024px) {
+  .page404 {
+    padding: 15rem 0;
+    &-title {
+      margin-bottom: 4rem;
+    }
+  }
+}
+@include max(768px) {
+  .page404 {
+    padding: 10rem 0;
+    &-title {
+      margin-bottom: 3rem;
+    }
+  }
+}

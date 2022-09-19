@@ -1,0 +1,79 @@
+.earn {
+  &-wrap {
+    margin: 0 -2.4rem;
+    display: flex;
+  }
+  &-title {
+    margin-bottom: 4.5rem;
+  }
+  &-txt {
+    margin-bottom: 2rem;
+    max-width: 47rem;
+  }
+  &-img {
+    position: relative;
+    &::after {
+      content: '';
+      display: block;
+      width: 80%;
+      height: 83%;
+      background-color: $c-yel;
+      position: absolute;
+      top: 5%;
+      right: 0;
+      z-index: -1;
+      pointer-events: none;
+      animation: blob 20s linear infinite;
+    }
+  }
+  &-decor {
+    position: absolute;
+    width: 15.3%;
+    &:nth-child(1) {
+      top: 30%;
+      left: 10%;
+      animation: dollar 5s linear infinite;
+    }
+    &:nth-child(2) {
+      top: 9%;
+      right: 0;
+      animation: dollar 3s linear infinite reverse;
+    }
+  }
+}
+@include max(1440px) {
+  .earn {
+    &-title {
+      margin-bottom: 3rem;
+    }
+    &-txt {
+      margin-bottom: 3rem;
+    }
+  }
+}
+@include max(768px) {
+  .earn {
+    &-wrap {
+      flex-wrap: wrap;
+      justify-content: center;
+      .col-7 {
+        width: 100%;
+        max-width: 48rem;
+      }
+      .col-5 {
+        width: 100%;
+      }
+      .section-pri {
+        padding-bottom: 0;
+      }
+    }
+    &-title {
+      margin-bottom: 3rem;
+    }
+    &-txt {
+      margin-bottom: 3rem;
+    }
+  }
+}
+@include max(480px) {
+}

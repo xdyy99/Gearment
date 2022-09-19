@@ -1,0 +1,546 @@
+.catalog {
+  &-search {
+    padding: 4rem 0;
+    &-wrap {
+      position: relative;
+    }
+    &-inp {
+      border: 1px solid rgba(170, 170, 170, 1);
+      padding: 1.6rem 2.4rem 1.4rem;
+      padding-left: 8rem;
+      width: 100%;
+      border-radius: 999px;
+      &:focus {
+        border-color: $c-pri;
+      }
+    }
+    &-icon {
+      display: block;
+      @include sqr(4rem);
+      position: absolute;
+      left: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &-banner {
+    position: relative;
+    z-index: 1;
+    background-color: $c-prim;
+    color: #fff;
+    &.dark {
+      background-color: $c-blu4;
+    }
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 -2.4rem;
+      align-items: center;
+      .col-5 {
+        &:first-child {
+          padding: 8rem 2.4rem;
+        }
+        &:last-child {
+          align-self: flex-end;
+        }
+      }
+    }
+    &-title {
+      margin-bottom: 2rem;
+    }
+    .decor-box {
+      position: absolute;
+      pointer-events: none;
+      z-index: -1;
+      bottom: 0;
+      left: 0;
+      transform: translateY(40%);
+      @include vwbox(235);
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 60%;
+        background-color: $c-pri;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      &::after {
+        bottom: 0;
+        right: 0;
+        top: unset;
+        left: unset;
+        width: 40%;
+        height: 40%;
+      }
+    }
+  }
+  &-list {
+    &-wrap {
+      margin: 0 -2.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      .col-4 {
+        margin-bottom: 10rem;
+      }
+    }
+  }
+  &-item {
+    .img {
+      padding-top: 135%;
+      margin-bottom: 3rem;
+      background-color: #efede9;
+      img {
+        transition: 0.3s ease-out;
+      }
+      @include hover() {
+        img {
+          transform: scale(1.1);
+        }
+      }
+      &-tag {
+        display: block;
+        padding: 0.5rem 2.4rem;
+        background-color: $c-pri;
+        color: #fff;
+        position: absolute;
+        top: 3rem;
+        right: 3rem;
+        font-weight: 600;
+        z-index: 2;
+        &.yellow {
+          background-color: $c-yel;
+          color: $c-blu3;
+        }
+      }
+    }
+    .title {
+      font-weight: 600;
+      display: block;
+      @include hover() {
+        color: $c-prim;
+      }
+    }
+    .name {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .price {
+      &-big {
+        font-weight: 600;
+      }
+      &-small {
+        font-size: 1.6rem;
+        color: $c-blu2;
+      }
+    }
+  }
+  &-menu {
+    margin-bottom: 4rem;
+    ul {
+      display: flex;
+      justify-content: center;
+    }
+    a {
+      display: block;
+      padding: 1rem 4rem;
+      color: #b8b8b8;
+      border-bottom: 1px solid #b8b8b8;
+      @include hover() {
+        color: $c-prim;
+      }
+      &.current-active-item {
+        color: $c-pri;
+        border-color: $c-pri;
+      }
+    }
+  }
+  &-filter {
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -2.4rem;
+    }
+  }
+  &-sidebar {
+    &-title {
+      margin-bottom: 2rem;
+      color: $c-pri;
+    }
+  }
+  &-detail {
+    padding: 5rem 0;
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0 -2.4rem;
+    }
+    &-content {
+      .title {
+        color: $c-blu3;
+      }
+      .code {
+        margin-bottom: 2.4rem;
+      }
+      .price {
+        &-big {
+          color: $c-pri;
+        }
+        &-small {
+          color: $c-pri;
+          margin-bottom: 1rem;
+        }
+      }
+      .align-content {
+        margin-bottom: 1rem;
+        line-height: 2;
+      }
+      .panel {
+        display: flex;
+        margin-bottom: 1rem;
+        &-radio {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 40rem;
+          margin-left: auto;
+          flex-grow: 1;
+          &-item {
+            text-align: center;
+            min-width: max-content;
+            width: calc(100% / 8);
+            padding: 0.5rem;
+            .cir {
+              @include cir(3.2rem);
+              border: 1px solid rgba(184, 184, 184, 1);
+            }
+          }
+        }
+        &-box {
+          border: 1px solid rgba(184, 184, 184, 1);
+          background-color: #fff;
+        }
+      }
+      .btn {
+        text-align: right;
+        margin-top: 2.4rem;
+      }
+    }
+    .swiper {
+      &-detail {
+        margin-bottom: 3rem;
+      }
+      &-button-next,
+      &-button-prev {
+        background-color: transparent;
+        @include hover {
+          box-shadow: none;
+          background-color: rgba(122, 209, 255, 0.3);
+        }
+      }
+    }
+    .detail-slide-thumb {
+      cursor: pointer;
+      background-color: #efede9;
+    }
+    .detail-slide-img {
+      background-color: #efede9;
+    }
+  }
+  &-tab {
+    padding: 10rem 0;
+    background-color: rgba(237, 248, 254, 1);
+  }
+  &-related {
+    overflow: hidden;
+    &-title {
+      margin-bottom: 3rem;
+    }
+    .swiper {
+      &-container {
+        margin: 0 -9rem;
+      }
+      &-slide {
+        width: calc(100% / 3);
+        padding: 0 9rem;
+        .ratio-box {
+          background-color: #efede9;
+        }
+      }
+      &-button-next,
+      &-button-prev {
+        display: none;
+      }
+    }
+  }
+}
+
+@include max(1440px) {
+  .catalog {
+    &-detail {
+      &-wrap {
+        .col-5 {
+          width: 45%;
+        }
+        .col-6 {
+          width: 55%;
+        }
+      }
+    }
+  }
+}
+@include max(1280px) {
+  .catalog {
+    &-list {
+      &-wrap {
+        .col-4 {
+          margin-bottom: 8rem;
+        }
+      }
+    }
+    &-item {
+      .img {
+        &-tag {
+          top: 1.2rem;
+          right: 1.2rem;
+        }
+      }
+    }
+  }
+}
+@include max(1024px) {
+  .catalog {
+    &-banner {
+      &-wrap {
+        .col-5 {
+          width: 50%;
+        }
+      }
+    }
+    &-list {
+      &-wrap {
+        .col-4 {
+          margin-bottom: 6rem;
+        }
+      }
+    }
+    &-item {
+      .img {
+        &-tag {
+          padding: 0.5rem 1.2rem;
+          top: 1.2rem;
+          right: 1.2rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    &-filter {
+      &-wrap {
+        > .col-9,
+        > .col-3 {
+          width: 100%;
+        }
+      }
+    }
+    &-search {
+      background-color: $c-pri;
+      padding-bottom: 0;
+      .container {
+        padding-right: 8.4rem;
+      }
+      &-inp {
+        background-color: #fff;
+      }
+    }
+    &-menu {
+      background-color: $c-pri;
+      color: #fff;
+      ul {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        &::-webkit-scrollbar {
+          height: 0;
+        }
+      }
+      li:last-child a {
+        margin-right: 0;
+      }
+      a {
+        width: max-content;
+        border: none;
+        padding: 2.4rem 0;
+        margin-right: 2.4rem;
+        font-size: 1.6rem;
+
+        &.current-active-item {
+          color: #fff;
+          font-weight: bold;
+        }
+      }
+    }
+    &-detail {
+      &-wrap {
+        .col-5 {
+          width: 80%;
+          max-width: 76.8rem;
+          margin: 0 auto 3rem;
+        }
+        .col-6 {
+          width: 100%;
+        }
+      }
+      &-content {
+        .code {
+          margin-bottom: 1.2rem;
+        }
+        .price-small {
+          margin-bottom: 1.2rem;
+        }
+        .align-content {
+          margin-bottom: 1.2rem;
+        }
+      }
+    }
+    &-related {
+      .swiper {
+        &-container {
+          margin: 0 -2.4rem;
+        }
+        &-slide {
+          width: calc(100% / 3);
+          padding: 0 2.4rem;
+        }
+      }
+    }
+  }
+}
+@include max(768px) {
+  .catalog {
+    &-search {
+      padding: 2.4rem 0 0;
+      &-inp {
+        padding: 1.2rem 2.4rem 1rem;
+        padding-left: 5rem;
+      }
+      &-icon {
+        @include sqr(3rem);
+        left: 1.2rem;
+      }
+    }
+
+    &-banner {
+      &-wrap {
+        .col-5 {
+          width: 100%;
+          &:first-child {
+            padding: 6rem 2.4rem 3rem;
+          }
+        }
+      }
+      &-img {
+        max-width: 48rem;
+        margin: 0 auto;
+      }
+    }
+    &-list {
+      &-wrap {
+        margin: 0 -1.2rem;
+        .col-4 {
+          padding: 0 1.2rem;
+          width: 50%;
+          margin-bottom: 4rem;
+        }
+      }
+    }
+    &-item {
+      .img {
+        margin-bottom: 0.5rem;
+        &-tag {
+          font-size: 1.4rem;
+        }
+      }
+      .title {
+        font-weight: 400;
+      }
+      .name {
+        display: none;
+      }
+      .price {
+        &-small {
+          display: none;
+        }
+      }
+    }
+    &-detail {
+      &-content {
+        .panel {
+          display: block;
+          &-radio {
+            margin-left: 0;
+            margin-top: 1rem;
+            &-item {
+              width: 25%;
+            }
+          }
+          &-color {
+            .panel-radio-item {
+              width: 4rem;
+              .cir {
+                @include cir(2rem);
+              }
+            }
+          }
+        }
+      }
+      &-wrap {
+        .col-5 {
+          padding: 0;
+          width: 100%;
+        }
+      }
+      .swiper-detail {
+        margin-bottom: 0;
+      }
+      .swiper-thumb {
+        display: none;
+      }
+    }
+    &-related {
+      .swiper {
+        &-slide {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+@include max(480px) {
+  .catalog {
+    &-item {
+      .img {
+        &-tag {
+          font-size: 1.2rem;
+          padding: 0.5rem;
+          top: 0.5rem;
+          right: 0.5rem;
+        }
+      }
+      .price-big,
+      .title {
+        font-size: 1.4rem;
+      }
+    }
+    &-related {
+      .swiper {
+        &-slide {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

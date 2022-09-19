@@ -1,0 +1,65 @@
+.mockup {
+  &-background {
+    background-color: $c-light2;
+    padding: 11rem 0;
+  }
+  &-wrap {
+    display: flex;
+    align-items: center;
+    margin: 0 -2.4rem;
+
+    .col-5 {
+      margin: 0 auto;
+    }
+  }
+  &-img {
+    position: relative;
+    .ratio-box {
+      background-color: $c-blu3;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+  &-title {
+    margin-bottom: 7rem;
+  }
+}
+@include max(1024px) {
+  .mockup {
+    &-background {
+      padding: 8rem 0;
+    }
+    &-title {
+      margin-bottom: 4rem;
+    }
+  }
+}
+@include max(768px) {
+  .mockup {
+    &-background {
+      padding: 0;
+    }
+    &-wrap {
+      flex-wrap: wrap;
+      .col-6 {
+        width: 100%;
+        padding: 2.4rem;
+      }
+      .col-5 {
+        width: 100%;
+        padding: 2.4rem;
+      }
+    }
+    &-img {
+      .ratio-box {
+        transform: none;
+        position: static;
+      }
+    }
+    &-title {
+      margin-bottom: 3rem;
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.newsletter {
+  overflow: hidden;
+  padding-bottom: 0;
+  .col-10 {
+    margin: 0 auto;
+    padding: 10rem 2.4rem;
+    background-color: $c-blu3;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
+  &-title {
+    margin-bottom: 2.2rem;
+  }
+  &-form {
+    .btn-pri {
+      border-color: #fff;
+      color: #fff;
+      padding: 1.6rem 4.8rem;
+    }
+  }
+  &-inp {
+    display: block;
+    width: 100%;
+    padding: 2.5rem 3.5rem 2.3rem;
+    max-width: 65rem;
+    background-color: #fff;
+    border: 1px solid #b8b8b8;
+    border-radius: 999px;
+    margin: 0 auto 5rem;
+  }
+  &-checkbox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+    input {
+      display: none;
+      &:checked ~ .box {
+        background-size: 70%;
+      }
+    }
+    .box {
+      @include sqr(2.4rem);
+      border: 1px solid #fff;
+      margin-right: 1rem;
+      background: url('../images/check-ic.svg') 50% 50% / 0% no-repeat transparent;
+      transition: 0.3s ease-out;
+    }
+    .text {
+      text-align: left;
+      font-size: 1.6rem;
+      max-width: calc(100% - 3.4rem);
+      user-select: none;
+    }
+  }
+
+  .decor-box {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    @include vwbox(144);
+    background-color: $c-pri;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+}
+@include max(1024px) {
+  .newsletter {
+    .col-10 {
+      padding: 5rem 2.4rem;
+      width: 100%;
+    }
+    &-inp {
+      padding: 1.5rem 2.4rem 1.3rem;
+      max-width: 100%;
+      margin: 0 auto 3rem;
+    }
+    &-checkbox {
+      margin-bottom: 3rem;
+    }
+  }
+}
+.wpcf7-spinner {
+  display: none !important;
+}
+@include max(768px) {
+  .newsletter {
+    padding: 0;
+    &-title {
+      text-align: left;
+    }
+    .container {
+      padding: 0;
+    }
+    &-checkbox {
+      .text {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

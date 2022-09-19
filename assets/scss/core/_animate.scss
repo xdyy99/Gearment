@@ -1,0 +1,70 @@
+@keyframes blob {
+  0% {
+    border-radius: 71% 29% 81% 19% / 73% 41% 59% 27%;
+  }
+  20% {
+    border-radius: 53% 47% 65% 35% / 68% 32% 68% 32%;
+  }
+  40% {
+    border-radius: 36% 64% 53% 47% / 45% 46% 54% 55%;
+  }
+  60% {
+    border-radius: 39% 61% 27% 73% / 52% 69% 31% 48%;
+  }
+  80% {
+    border-radius: 67% 33% 54% 46% / 72% 58% 42% 28%;
+  }
+  100% {
+    border-radius: 71% 29% 81% 19% / 73% 41% 59% 27%;
+  }
+}
+
+@keyframes jumping {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-20%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes dollar {
+  0% {
+    transform: translateY(0%) rotateY(0);
+  }
+  25% {
+    transform: translateY(-15%) rotateY(-180deg);
+  }
+  50% {
+    transform: translateY(0%) rotateY(-360deg);
+  }
+  75% {
+    transform: translateY(15%) rotateY(-180deg);
+  }
+  100% {
+    transform: translateY(0%) rotateY(0);
+  }
+}

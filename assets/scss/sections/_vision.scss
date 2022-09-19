@@ -1,0 +1,78 @@
+.vision {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  background-size: cover;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(1, 17, 113, 0.8);
+    pointer-events: none;
+    z-index: -1;
+  }
+  &-row {
+    margin-bottom: 8rem;
+    max-width: 78rem;
+  }
+  &-title {
+    margin-bottom: 2.5rem;
+  }
+  &-box {
+    border: 1px solid #fff;
+    padding: 5rem 4rem;
+  }
+  &-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-bottom: -10rem;
+    .col-4 {
+      margin-bottom: 10rem;
+    }
+  }
+  &-number {
+    @include fz(42);
+    font-weight: 600;
+  }
+}
+@include max(768px) {
+  .vision {
+    &-row {
+      margin-bottom: 4rem;
+    }
+    &-box {
+      padding: 3.2rem;
+    }
+    &-wrap {
+      margin: 0 -1rem -3.2rem;
+
+      .col-4 {
+        padding: 0 1rem;
+        margin-bottom: 3.2rem;
+      }
+    }
+  }
+}
+@include max(480px) {
+  .vision {
+    &-row {
+      margin-bottom: 3rem;
+    }
+    &-box {
+      padding: 2.4rem;
+    }
+    &-wrap {
+      margin: 0 -1rem -2.4rem;
+
+      .col-4 {
+        width: 50%;
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+}

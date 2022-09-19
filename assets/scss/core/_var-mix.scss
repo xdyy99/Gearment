@@ -1,0 +1,75 @@
+// Color
+$c-prim: #4c4ef8;
+$c-pri: #0023ce;
+$c-sec: rgba(
+  $color: #0038d7,
+  $alpha: 0.8,
+);
+$c-blu2: #001fbc;
+$c-blu3: #001483;
+$c-blu4: #011171;
+$c-blu5: #020a4b;
+$c-light: #7ad1ff;
+$c-light2: #c9e9fd;
+$c-yel: #ffba5a;
+
+// mixin default
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin default-background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@mixin clear {
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+// mixin advance
+
+@mixin lc($value: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $value;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@mixin max($value) {
+  @media screen and (max-width: $value) {
+    @content;
+  }
+}
+@mixin min($value) {
+  @media screen and (min-width: $value) {
+    @content;
+  }
+}
+@mixin hover($value: 1025px) {
+  &:hover {
+    @media screen and (min-width: $value) {
+      @content;
+    }
+  }
+}
+@mixin sqr($value: 4rem) {
+  width: $value;
+  height: $value;
+}
+@mixin cir($value: 4rem) {
+  width: $value;
+  height: $value;
+  border-radius: 999px;
+}
+@mixin vw($value) {
+  width: calc(#{$value} / 1920 * 100vw);
+}
+@mixin vwbox($value) {
+  width: calc(#{$value} / 1920 * 100vw);
+  height: calc(#{$value} / 1920 * 100vw);
+}

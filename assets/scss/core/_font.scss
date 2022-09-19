@@ -1,0 +1,74 @@
+@mixin fz($value) {
+  @if $value <= 16 {
+    font-size: $value * 0.1 + 0rem;
+  } @else if $value <= 20 {
+    font-size: $value * 0.1 + 0rem;
+    @include max(1280px) {
+      font-size: 1.8rem;
+    }
+    @include max(1024px) {
+      font-size: 1.7rem;
+    }
+    @include max(768px) {
+      font-size: 1.6rem;
+    }
+  } @else if $value <= 24 {
+    font-size: $value * 0.1 + 0rem;
+    @include max(1280px) {
+      font-size: 2rem;
+    }
+    @include max(1024px) {
+      font-size: 1.8rem;
+    }
+    @include max(768px) {
+      font-size: 1.6rem;
+    }
+  } @else if $value <= 32 {
+    font-size: $value * 0.1 + 0rem;
+    @include max(1920px) {
+      font-size: calc(#{$value} / 1920 * 100vw);
+    }
+    @include max(1280px) {
+      font-size: 2.4rem;
+    }
+    @include max(1024px) {
+      font-size: 2.2rem;
+    }
+    @include max(768px) {
+      font-size: 2rem;
+    }
+  } @else if $value <= 48 {
+    font-size: $value * 0.1 + 0rem;
+    @include max(1920px) {
+      font-size: calc(#{$value} / 1920 * 100vw);
+    }
+    @include max(1024px) {
+      font-size: 2.8rem;
+    }
+    @include max(1024px) {
+      font-size: 2.5rem;
+    }
+    @include max(768px) {
+      font-size: 2.2rem;
+    }
+  } @else if $value <= 60 {
+    font-size: $value * 0.1 + 0rem;
+    @include max(1920px) {
+      font-size: calc(#{$value} / 1920 * 100vw);
+    }
+    @include max(1024px) {
+      font-size: 3.2rem;
+    }
+    @include max(768px) {
+      font-size: 2.4rem;
+    }
+  } @else {
+    font-size: $value * 0.1 + 0rem;
+    @include max(1920px) {
+      font-size: calc(#{$value} / 1920 * 100vw);
+    }
+    @include max(480px) {
+      font-size: $value * 0.025 + 0rem;
+    }
+  }
+}

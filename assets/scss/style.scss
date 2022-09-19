@@ -1,0 +1,49 @@
+// Import //
+@import url('../js/libs/swiper/swiper-bundle.min.css');
+@import url('../js/libs/gallery/lightgallery.min.css');
+
+// Core //
+@import './core/var-mix';
+@import './core/reset';
+@import './core/font';
+@import './core/animate';
+@import './core/global';
+@import './core/default-content';
+
+// Components //
+@import './components/menu';
+@import './components/pagination';
+@import './components/swiper';
+@import './components/breadcrumb';
+@import './components/filter';
+@import './components/tab';
+@import './components/comment';
+@import './components/newsletter';
+
+// Sections //
+@import './sections/header';
+@import './sections/hero';
+@import './sections/banner';
+@import './sections/intro';
+@import './sections/design';
+@import './sections/step';
+@import './sections/map';
+@import './sections/inter';
+@import './sections/explore';
+@import './sections/earn';
+@import './sections/finan';
+@import './sections/footer';
+@import './sections/privacy';
+@import './sections/blog';
+@import './sections/page404';
+@import './sections/policies';
+@import './sections/help';
+@import './sections/contact';
+@import './sections/video';
+@import './sections/catalog';
+@import './sections/promo';
+@import './sections/why';
+@import './sections/mockup';
+@import './sections/vision';
+@import './sections/time';
+@import './sections/leader';
