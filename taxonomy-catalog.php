@@ -58,6 +58,11 @@ $catImgLogo = get_field('catalog_image_icon', $term);
                     }
                     ?>
                 </ul>
+
+                <div class="filter-select-wrap">
+                    Sort by
+                    <?php echo do_shortcode('[piotnetgrid id=7811 type=facet grid=7809]'); ?>
+                </div>
             </div>
         </div>
     </div>
@@ -65,8 +70,6 @@ $catImgLogo = get_field('catalog_image_icon', $term);
     <div class="catalog-filter">
         <div class="container">
             <div class="breadcrumb">
-
-                <a href="#">Catalog </a> <b>></b>
                 <?php
                 if ($term->parent > 0) {
                     foreach ($terms as $term) {
@@ -94,11 +97,10 @@ $catImgLogo = get_field('catalog_image_icon', $term);
                     </div>
                 </div>
                 <div class="col-9">
-                    <div class="filter-select-wrap">
-                        Sort by
-                        <?php echo do_shortcode('[piotnetgrid id=7811 type=facet grid=7809]'); ?>
-                    </div>
                     <div class="catalog-list-wrap">
+                        <?php if (get_theme_mod('align_plan_activate')) { ?>
+                            <div class="align_plan_name"><?php echo get_theme_mod('align_plan_name'); ?></div>
+                        <?php } ?>
                         <?php echo do_shortcode('[piotnetgrid id=7809 type=grid]'); ?>
                     </div>
                     <div class="pagination">

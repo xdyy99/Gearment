@@ -27,9 +27,8 @@
         <div class="header-wrap hdJS">
             <div class="container">
                 <div class="header-inner">
-                    <a href="/" class="custom-logo-link">
-                        <img src="<?php echo ASSETS . '/images/logo.svg'; ?>" alt="" />
-                    </a>
+                    <?php echo get_custom_logo(); ?>
+
                     <div class="header-menu menu-hd menuBoard">
                         <div class="menu-bg menuBg"></div>
                         <div class="menu-wrap">

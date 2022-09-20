@@ -6,16 +6,25 @@ while (have_posts()) :
 
     $postID = get_the_ID();
     postview_set($postID);
+    $terms = wp_get_object_terms($post->ID, 'catalog', array(
+        'orderby' => 'taxonomy',
+        'order'   => 'ASC',
+    ));
+    $term = get_queried_object($post->ID);
 ?>
 
     <div class="catalog-detail">
         <div class="container">
             <div class="breadcrumb">
-                <span href="#">Catalog </span> >
-                <span>
-                    <?php $term = wp_get_object_terms($post->ID, 'catalog', array('fields' => 'names'));
-                    echo $term[0]; ?>
-                </span> >
+                <?php
+                if ($term->parent > 0) {
+                    foreach ($terms as $term) {
+                        echo '<a href="' . get_term_link($term) . '"> ' . $term->name . ' </a> <b>></b>';
+                    }
+                } else {
+                    echo '<a href="' . get_term_link($terms[0]) . '"> ' . $terms[0]->name . ' </a> >';
+                }
+                ?>
                 <a> <?php the_field('product_name'); ?></a>
             </div>
 
@@ -24,10 +33,25 @@ while (have_posts()) :
                     <div class="swiper-product">
                         <div class="swiper-detail">
                             <div class="swiper-container">
-                                <?php
-                                $images = get_field('product_image');
-                                if ($images) : ?>
-                                    <div class="swiper-wrapper">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    $images = get_field('product_image');
+                                    $videos = get_field('product_video_acf');
+
+
+                                    foreach ($videos as $key => $value) :
+                                        $video_url = $value['video_url'];
+                                        if ($video_url != '') {
+                                    ?>
+                                            <div class="swiper-slide">
+                                                <div class="detail-slide-img ratio-box ">
+                                                    <video src="<?= $video_url ?>" controls></video>
+                                                </div>
+                                            </div>
+                                        <?php }
+                                    endforeach;
+                                    if ($images) : ?>
+
                                         <?php foreach ($images as $image) : ?>
                                             <div class="swiper-slide">
                                                 <div class="detail-slide-img ratio-box ">
@@ -35,8 +59,8 @@ while (have_posts()) :
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                             <div class="swiper-ctrl">
                                 <div class="swiper-button-next"></div>
@@ -45,10 +69,24 @@ while (have_posts()) :
                         </div>
                         <div class="swiper-thumb">
                             <div class="swiper-container">
-                                <?php
-                                $imagesthumbs = get_field('product_image');
-                                if ($imagesthumbs) : ?>
-                                    <div class="swiper-wrapper">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    $imagesthumbs = get_field('product_image');
+                                    foreach ($videos as $key => $value) :
+                                        $video_c_url = $value['video_url'];
+                                        $video_thumb = $value['video_thumb'];
+                                        if ($video_c_url != '') {
+                                    ?>
+                                            <div class="swiper-slide">
+                                                <div class="detail-slide-thumb">
+                                                    <div class="ratio-box">
+                                                        <img src="<?= $video_thumb ?>" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php  }
+                                    endforeach;
+                                    if ($imagesthumbs) : ?>
                                         <?php foreach ($imagesthumbs as $image) : ?>
                                             <div class="swiper-slide">
                                                 <div class="detail-slide-thumb">
@@ -58,8 +96,8 @@ while (have_posts()) :
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -70,14 +108,13 @@ while (have_posts()) :
                         <div class="code">SKU: <?php the_field('product_sku'); ?></div>
 
                         <div class="price-big title-h4">From USD <?php the_field('product_price'); ?></div>
-                        <div class="price-small">From USD <?php the_field('product_price_premium'); ?> with Premium Plan</div>
-
+                        <?php if (get_theme_mod('align_plan_activate')) { ?>
+                            <div class="price-small">From USD <?php the_field('product_price_premium'); ?> with <?php echo get_theme_mod('align_plan_name'); ?></div>
+                        <?php } ?>
                         <div class="align-content">
-                            <p>
+                            <?php the_field('product_description'); ?>
 
-                                <?php the_field('product_description'); ?>
-                            </p>
-
+                            <p></p>
                             <p>Made by <span style="color: #0023ce"> <?php the_field('product_brand'); ?> </span></p>
                         </div>
 
@@ -105,16 +142,24 @@ while (have_posts()) :
                                 $product_color_number = count(get_field('product_color'));
                                 $product_color = get_field('product_color');
                                 $product_color_hex = get_field('product_hex_color');
-                                for ($x = 0; $x < $product_color_number; $x++) { ?>
+                                for ($x = 0; $x < count($product_color_hex); $x++) {
+                                    $arr_color = explode('/', $product_color_hex[$x]);
+                                ?>
                                     <div class="panel-radio-item">
-                                        <div class="cir" style="background-color: #<?php echo $product_color_hex[$x]; ?>"></div>
+                                        <?php if (count($arr_color) == 1) { ?>
+                                            <div class="cir" style="background-color: #<?php echo  trim($arr_color[0]); ?>"></div>
+                                        <?php } else { ?>
+                                            <div class="cir" style="background-color: #<?php echo trim($arr_color[1]); ?>">
+                                                <div class="mix-color" style="background-color: #<?php echo trim($arr_color[0]); ?>"></div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 <?php } ?>
 
                             </div>
                         </div>
                         <div class="btn">
-                            <a href="https://app-v2-dev.gearment.com/auth/register" class="btn-pri">Start Designing</a>
+                            <a href="<?php echo (get_theme_mod('align_signup')) ?>" class="btn-pri">Start Designing</a>
                         </div>
                     </div>
                 </div>
@@ -130,8 +175,10 @@ while (have_posts()) :
                     <div class="tab-menu-item tabBtn">Care instructions</div>
                     <div class="tab-menu-item tabBtn">Shipping</div>
 
-                    <?php $has_size = get_field('has_size');
-                    if ($has_size) : ?>
+                    <?php $has_imper = get_field('has_size');
+                    $has_metric = get_field('has_metric');
+                    $has_metric = get_field('has_chart');
+                    if ($has_imper || $has_metric || $has_chart) : ?>
                         <div class="tab-menu-item tabBtn">Size guide</div>
                     <?php endif; ?>
                     <div class="tab-menu-item tabBtn">File guidelines</div>
@@ -264,101 +311,135 @@ while (have_posts()) :
                     </div>
                 </div>
 
-                <?php $has_size = get_field('has_size');
-                if ($has_size) : ?>
+                <?php $has_imper = get_field('has_size');
+                $has_metric = get_field('has_metric');
+                $has_chart = get_field('has_chart');
+                if ($has_imper || $has_metric || $has_chart) : ?>
                     <div class="tab-board-item tabPanel">
-                        <div class="tab-table tab-size">
-                            <div class="tt-wrap">
-                                <div class="tt-head tt-row">
-                                    <div class="tt-col">Imperial</div>
-                                    <div class="tt-col">XS</div>
-                                    <div class="tt-col">S</div>
-                                    <div class="tt-col">M</div>
-                                    <div class="tt-col">L</div>
-                                    <div class="tt-col">XL</div>
-                                    <div class="tt-col">2XL</div>
-                                    <div class="tt-col">3XL</div>
-                                    <div class="tt-col">4XL</div>
-                                    <div class="tt-col">5XL</div>
-                                </div>
-                                <?php
-                                $size_list1 = get_field('size_list_imperial');
-                                foreach ($size_list1 as $key => $value) :
-                                    $part = $value['part'];
-                                    $size1 = $value['xs'];
-                                    $size2 = $value['s'];
-                                    $size3 = $value['m'];
-                                    $size4 = $value['l'];
-                                    $size5 = $value['xl'];
-                                    $size6 = $value['2xl'];
-                                    $size7 = $value['3xl'];
-                                    $size8 = $value['4xl'];
-                                    $size9 = $value['5xl'];
-                                ?>
-
-                                    <div class="tt-row">
-                                        <div class="tt-col"> <?= $part  ?> </div>
-                                        <div class="tt-col"> <?= $size1 ?> </div>
-                                        <div class="tt-col"> <?= $size2 ?> </div>
-                                        <div class="tt-col"> <?= $size3 ?> </div>
-                                        <div class="tt-col"> <?= $size4 ?> </div>
-                                        <div class="tt-col"> <?= $size5 ?> </div>
-                                        <div class="tt-col"> <?= $size6 ?> </div>
-                                        <div class="tt-col"> <?= $size7 ?> </div>
-                                        <div class="tt-col"> <?= $size8 ?> </div>
-                                        <div class="tt-col"> <?= $size9 ?> </div>
-
+                        <?php if ($has_imper) { ?>
+                            <div class="tab-table tab-size">
+                                <div class="tt-wrap">
+                                    <div class="tt-head tt-row">
+                                        <div class="tt-col">Imperial</div>
+                                        <div class="tt-col">XS</div>
+                                        <div class="tt-col">S</div>
+                                        <div class="tt-col">M</div>
+                                        <div class="tt-col">L</div>
+                                        <div class="tt-col">XL</div>
+                                        <div class="tt-col">2XL</div>
+                                        <div class="tt-col">3XL</div>
+                                        <div class="tt-col">4XL</div>
+                                        <div class="tt-col">5XL</div>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                    <?php
+                                    $size_list1 = get_field('size_list_imperial');
+                                    foreach ($size_list1 as $key => $value) :
+                                        $part = $value['part'];
+                                        $size1 = $value['xs'] ?: '--';
+                                        $size2 = $value['s'] ?: '--';
+                                        $size3 = $value['m'] ?: '--';
+                                        $size4 = $value['l'] ?: '--';
+                                        $size5 = $value['xl'] ?: '--';
+                                        $size6 = $value['2xl'] ?: '--';
+                                        $size7 = $value['3xl'] ?: '--';
+                                        $size8 = $value['4xl'] ?: '--';
+                                        $size9 = $value['5xl'] ?: '--';
+                                    ?>
 
-                        <div class="tab-table tab-size">
-                            <div class="tt-wrap">
-                                <div class="tt-head tt-row">
-                                    <div class="tt-col">Metric</div>
-                                    <div class="tt-col">XS</div>
-                                    <div class="tt-col">S</div>
-                                    <div class="tt-col">M</div>
-                                    <div class="tt-col">L</div>
-                                    <div class="tt-col">XL</div>
-                                    <div class="tt-col">2XL</div>
-                                    <div class="tt-col">3XL</div>
-                                    <div class="tt-col">4XL</div>
-                                    <div class="tt-col">5XL</div>
+                                        <div class="tt-row">
+                                            <div class="tt-col"> <?= $part  ?> </div>
+                                            <div class="tt-col"> <?= $size1 ?> </div>
+                                            <div class="tt-col"> <?= $size2 ?> </div>
+                                            <div class="tt-col"> <?= $size3 ?> </div>
+                                            <div class="tt-col"> <?= $size4 ?> </div>
+                                            <div class="tt-col"> <?= $size5 ?> </div>
+                                            <div class="tt-col"> <?= $size6 ?> </div>
+                                            <div class="tt-col"> <?= $size7 ?> </div>
+                                            <div class="tt-col"> <?= $size8 ?> </div>
+                                            <div class="tt-col"> <?= $size9 ?> </div>
+
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
-                                <?php
-                                $size_list2 = get_field('size_list_metric');
-                                foreach ($size_list2 as $key => $value) :
-                                    $part = $value['part'];
-                                    $size1 = $value['xs'];
-                                    $size2 = $value['s'];
-                                    $size3 = $value['m'];
-                                    $size4 = $value['l'];
-                                    $size5 = $value['xl'];
-                                    $size6 = $value['2xl'];
-                                    $size7 = $value['3xl'];
-                                    $size8 = $value['4xl'];
-                                    $size9 = $value['5xl'];
-                                ?>
-
-                                    <div class="tt-row">
-                                        <div class="tt-col"> <?= $part  ?> </div>
-                                        <div class="tt-col"> <?= $size1 ?> </div>
-                                        <div class="tt-col"> <?= $size2 ?> </div>
-                                        <div class="tt-col"> <?= $size3 ?> </div>
-                                        <div class="tt-col"> <?= $size4 ?> </div>
-                                        <div class="tt-col"> <?= $size5 ?> </div>
-                                        <div class="tt-col"> <?= $size6 ?> </div>
-                                        <div class="tt-col"> <?= $size7 ?> </div>
-                                        <div class="tt-col"> <?= $size8 ?> </div>
-                                        <div class="tt-col"> <?= $size9 ?> </div>
-
-                                    </div>
-                                <?php endforeach; ?>
-
                             </div>
-                        </div>
+                        <?php } ?>
+                        <?php if ($has_metric) { ?>
+                            <div class="tab-table tab-size">
+                                <div class="tt-wrap">
+                                    <div class="tt-head tt-row">
+                                        <div class="tt-col">Metric</div>
+                                        <div class="tt-col">XS</div>
+                                        <div class="tt-col">S</div>
+                                        <div class="tt-col">M</div>
+                                        <div class="tt-col">L</div>
+                                        <div class="tt-col">XL</div>
+                                        <div class="tt-col">2XL</div>
+                                        <div class="tt-col">3XL</div>
+                                        <div class="tt-col">4XL</div>
+                                        <div class="tt-col">5XL</div>
+                                    </div>
+                                    <?php
+                                    $size_list2 = get_field('size_list_metric');
+                                    foreach ($size_list2 as $key => $value) :
+                                        $part = $value['part'];
+                                        $size1 = $value['xs'] ?: '--';
+                                        $size2 = $value['s'] ?: '--';
+                                        $size3 = $value['m'] ?: '--';
+                                        $size4 = $value['l'] ?: '--';
+                                        $size5 = $value['xl'] ?: '--';
+                                        $size6 = $value['2xl'] ?: '--';
+                                        $size7 = $value['3xl'] ?: '--';
+                                        $size8 = $value['4xl'] ?: '--';
+                                        $size9 = $value['5xl'] ?: '--';
+                                    ?>
+
+                                        <div class="tt-row">
+                                            <div class="tt-col"> <?= $part  ?> </div>
+                                            <div class="tt-col"> <?= $size1 ?> </div>
+                                            <div class="tt-col"> <?= $size2 ?> </div>
+                                            <div class="tt-col"> <?= $size3 ?> </div>
+                                            <div class="tt-col"> <?= $size4 ?> </div>
+                                            <div class="tt-col"> <?= $size5 ?> </div>
+                                            <div class="tt-col"> <?= $size6 ?> </div>
+                                            <div class="tt-col"> <?= $size7 ?> </div>
+                                            <div class="tt-col"> <?= $size8 ?> </div>
+                                            <div class="tt-col"> <?= $size9 ?> </div>
+
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($has_chart) { ?>
+                            <div class="tab-table tab-size size-chart">
+                                <div class="tt-wrap">
+                                    <div class="tt-head tt-row">
+                                        <div class="tt-col">Chart</div>
+                                        <div class="tt-col">2T</div>
+                                        <div class="tt-col">4T</div>
+                                        <div class="tt-col">5/6</div>
+                                    </div>
+                                    <?php
+                                    $size_list2 = get_field('size_list_chart');
+                                    foreach ($size_list2 as $key => $value) :
+                                        $part = $value['part'];
+                                        $size1 = $value['2t'] ?: '--';
+                                        $size2 = $value['4t'] ?: '--';
+                                        $size3 = $value['5t'] ?: '--';
+                                    ?>
+                                        <div class="tt-row">
+                                            <div class="tt-col"> <?= $part  ?> </div>
+                                            <div class="tt-col"> <?= $size1 ?> </div>
+                                            <div class="tt-col"> <?= $size2 ?> </div>
+                                            <div class="tt-col"> <?= $size3 ?> </div>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 <?php endif; ?>
 
@@ -412,10 +493,18 @@ while (have_posts()) :
                         <?php
                         global $post;
                         $related = get_posts(array(
-                            'category__in' => wp_get_post_categories($post->ID),
+                            // 'category__in' => wp_get_post_categories($post->ID),
                             'numberposts' => 3,
                             'post_type' => 'product',
-                            'post__not_in' => array($post->ID)
+                            'post_status' => 'publish',
+                            'post__not_in' => array($post->ID),
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'catalog',
+                                    'field' => $terms[1]->term_taxonomy_id,
+                                    'terms' => array($terms[1]->term_id),
+                                )
+                            )
                         ));
 
                         if ($related) foreach ($related as $post) {
@@ -424,7 +513,7 @@ while (have_posts()) :
                             $title = get_post_field('product_name', $id);
                             $name = get_post_field('product_brand', $id);
                             $price = get_post_field('product_price', $id);
-                            $price_pre = get_post_field('product_price_premium', $id);
+                            $plan_price = get_post_field('product_price_premium', $id);
                             setup_postdata($post);
                         ?>
 
@@ -438,7 +527,9 @@ while (have_posts()) :
                                         <a href="<?php the_permalink($id) ?>" class="title"><?php echo $title; ?></a>
                                         <div class="name">By <?= $name ?></div>
                                         <div class="price-big">From USD <?= $price ?></div>
-                                        <div class="price-small">From USD <?= $price_pre ?> with Premium Plan</div>
+                                        <?php if (get_theme_mod('align_plan_activate')) { ?>
+                                            <div class="price-small">From USD <?= $plan_price ?> with <?php echo get_theme_mod('align_plan_name') ?> </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

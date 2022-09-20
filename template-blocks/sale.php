@@ -53,7 +53,7 @@ $query = new WP_Query($args);
             $title = get_post_field('product_name', $id);
             $name = get_post_field('product_brand', $id);
             $price = get_post_field('product_price', $id);
-            $price_pre = get_post_field('product_price_premium', $id);
+            $plan_price = get_post_field('product_price_premium', $id);
 
           ?>
 
@@ -66,7 +66,9 @@ $query = new WP_Query($args);
                 <a href="<?php the_permalink($id) ?>" class="title"><?= $title; ?></a>
                 <div class="name">By <?= $name; ?></div>
                 <div class="price-big">From USD <?= $price; ?></div>
-                <div class="price-small">From USD <?= $price_pre; ?> with Premium Plan</div>
+                <?php if (get_theme_mod('align_plan_activate')) { ?>
+                  <div class="price-small">From USD <?= $plan_price  ?> with <?php echo get_theme_mod('align_plan_name') ?></div>
+                <?php } ?>
               </div>
             </div>
           <?php

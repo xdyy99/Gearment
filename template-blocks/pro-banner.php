@@ -33,13 +33,17 @@ $img = get_field('image');
 
 ?>
 
+
+
 <!-- HTML template  -->
 <div class="promo-banner">
   <div class="container">
     <div class="promo-search">
-      <form action="">
+      <form action="<?php echo esc_url(home_url('/')); ?>" method="get">
+        <!-- <input type="hidden" name="type" value="post" /> -->
+        <input type="hidden" name="type" value="product" />
         <div class="promo-search-wrap">
-          <input type="search" class="rs-form promo-search-inp" placeholder="Search for products, brands, categories" />
+          <input type="search" name="s" class="rs-form promo-search-inp" placeholder="Search for products, brands, categories" />
           <img class="promo-search-icon" src="<?php echo ASSETS . '/images/search-ic.svg'; ?>" alt="" />
         </div>
       </form>

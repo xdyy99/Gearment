@@ -42,57 +42,52 @@ $txt = get_field('text');
     </div>
 
     <div class="map-board">
-      <img src="<?php echo ASSETS . '/images/home-map.png'; ?>" alt="" />
-      <div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">USA</div>
+      <div class="ratio-box">
+        <img src="<?php echo ASSETS . '/images/map.svg'; ?>" alt="" />
+        <img class="map-hover" src="<?php echo ASSETS . '/images/map-hover.svg'; ?>" alt="" />
+        <div>
+          <div class="map-item">
+            <img src="<?php echo ASSETS . '/images/map-ic-3.svg'; ?>" alt="" />
+            <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
+            <div class="txt">USA</div>
+          </div>
+          <div class="map-item">
+            <img src="<?php echo ASSETS . '/images/map-ic-3.svg'; ?>" alt="" />
+            <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
+            <div class="txt">Canada</div>
+          </div>
+          <div class="map-item">
+            <img src="<?php echo ASSETS . '/images/map-ic-3.svg'; ?>" alt="" />
+            <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
+            <div class="txt">Mexico</div>
+          </div>
+          <div class="map-item">
+            <img src="<?php echo ASSETS . '/images/map-ic-3.svg'; ?>" alt="" />
+            <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
+            <div class="txt">UK</div>
+          </div>
+          <div class="map-item">
+            <img src="<?php echo ASSETS . '/images/map-ic-3.svg'; ?>" alt="" />
+            <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
+            <div class="txt">Spain</div>
+          </div>
+          <div class="map-item">
+            <img src="<?php echo ASSETS . '/images/map-ic-3.svg'; ?>" alt="" />
+            <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
+            <div class="txt">Australia</div>
+          </div>
+
         </div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">Canada</div>
-        </div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">Europe</div>
-        </div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">Asia</div>
-        </div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">Australia</div>
-        </div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">South America</div>
-        </div>
-        <div class="map-item">
-          <img src="<?php echo ASSETS . '/images/map-ic-1.svg'; ?>" alt="" />
-          <div class="txt">South Africa</div>
-        </div>
-      </div>
-      <div>
-        <div class="map-line">
-          <img src="<?php echo ASSETS . '/images/map-line-1.svg'; ?>" alt="" />
-        </div>
-        <div class="map-line">
-          <img src="<?php echo ASSETS . '/images/map-line-2.svg'; ?>" alt="" />
-        </div>
-        <div class="map-line">
-          <img src="<?php echo ASSETS . '/images/map-line-3.svg'; ?>" alt="" />
-        </div>
-        <div class="map-line">
-          <img src="<?php echo ASSETS . '/images/map-line-4.svg'; ?>" alt="" />
-        </div>
-        <div class="map-line">
-          <img src="<?php echo ASSETS . '/images/map-line-5.svg'; ?>" alt="" />
-        </div>
-        <div class="map-line">
-          <img src="<?php echo ASSETS . '/images/map-line-6.svg'; ?>" alt="" />
+        <div>
+          <img class="map-line" src="<?php echo ASSETS . '/images/map-line-1.svg'; ?>" alt="" />
+          <img class="map-line" src="<?php echo ASSETS . '/images/map-line-2.svg'; ?>" alt="" />
+          <img class="map-line" src="<?php echo ASSETS . '/images/map-line-3.svg'; ?>" alt="" />
+          <img class="map-line" src="<?php echo ASSETS . '/images/map-line-4.svg'; ?>" alt="" />
+          <img class="map-line" src="<?php echo ASSETS . '/images/map-line-5.svg'; ?>" alt="" />
+          <img class="map-line" src="<?php echo ASSETS . '/images/map-line-6.svg'; ?>" alt="" />
         </div>
       </div>
+
     </div>
   </div>
 </section>

@@ -29,18 +29,15 @@
 // Load values and assign defaults.
 //
 $btn1_txt = get_field('button1_text');
-$btn1_url = get_field('button1_url');
-//
 $btn2_txt = get_field('button2_text');
-$btn2_url = get_field('button2_url');
 
 ?>
 
 <!-- HTML template  -->
 <?php if ($btn1_txt) : ?>
-  <a href="<?= $btn1_url; ?>" class="header-btn btn-pri"><?= $btn1_txt; ?></a>
+  <a href="<?php echo (get_theme_mod('align_signup')) ?>" class="header-btn btn-pri"><?= $btn1_txt; ?></a>
 <?php endif; ?>
 
 <?php if ($btn2_txt) : ?>
-  <a href="<?= $btn2_url; ?>" class="header-btn btn-sec"><?= $btn2_txt; ?></a>
+  <a href="<?php echo (get_theme_mod('align_login')) ?>" class="header-btn btn-sec"><?= $btn2_txt; ?></a>
 <?php endif; ?>

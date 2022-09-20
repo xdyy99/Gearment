@@ -56,7 +56,7 @@ $btn_url = get_field('button_url');
             </div>
 
             <?php if ($btn_txt && $key == 0) : ?>
-              <a href="<?= $btn_url; ?>" class="btn-pri"><?= $btn_txt; ?></a>
+              <a href="<?php echo (get_theme_mod('align_login')) ?>" class="btn-pri"><?= $btn_txt; ?></a>
             <?php endif; ?>
           </div>
           <div class="col-8">

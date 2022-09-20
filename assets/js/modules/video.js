@@ -8,15 +8,19 @@ export default function video() {
       let pos = el.getBoundingClientRect().top;
       if (pos <= 0 && animate && window.innerWidth > 768) {
         el.classList.add('fullscreen');
+        setTimeout(() => {
+          video.play();
+          btn.classList.add('hide');
+        }, 1000);
         !animate;
       } else if (pos <= window.innerHeight / 2 && animate && window.innerWidth <= 768) {
         el.classList.add('fullscreen');
+        setTimeout(() => {
+          video.play();
+          btn.classList.add('hide');
+        }, 1000);
         !animate;
       }
-    });
-    btn.addEventListener('click', () => {
-      video.play();
-      btn.classList.add('hide');
     });
   });
 }

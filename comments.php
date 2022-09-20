@@ -34,7 +34,7 @@ function align_comments($comment, $args, $depth)
         <?php // end custom gravatar call 
         ?>
         <div class="info">
-          <?php printf(__('<div class="name">%1$s</div> %2$s', 'align'), get_comment_author_link(), edit_comment_link(__('(Edit)', 'monamedia'), '  ', '')) ?>
+          <?php printf(__('<div class="name">%1$s</div> %2$s', 'align'), get_comment_author_link(), edit_comment_link(__('(Edit)', 'align'), '  ', '')) ?>
           <div class="date" datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>"><?php comment_time(__('F jS, Y', 'align')); ?> </a></div>
         </div>
 

@@ -37,7 +37,7 @@ $bg = get_field('background');
     <div class="swiper-default">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <?php if (!wp_is_mobile()) : ?>
+          <?php if ($bg) : ?>
             <div class="swiper-slide">
               <div class="step-img ratio-box">
                 <img class="step-image" src="<?= $bg; ?>" alt="" />

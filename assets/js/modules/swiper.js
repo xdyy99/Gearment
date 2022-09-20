@@ -135,10 +135,10 @@ export default function swiper() {
       centeredSlides: true,
       slidesPerView: 1,
       watchSlidesProgress: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
+      // autoplay: {
+      //   delay: 5000,
+      //   disableOnInteraction: false,
+      // },
       navigation: {
         nextEl: next,
         prevEl: prev,

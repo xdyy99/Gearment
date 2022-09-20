@@ -143,6 +143,11 @@
         width: calc(100% * 3 / 12);
       }
     }
+    &.size-chart {
+      .tt-col {
+        width: calc(100% * 3 / 12);
+      }
+    }
   }
   &-file {
     .tt-col {

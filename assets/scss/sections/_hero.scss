@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   position: relative;
-  min-height: calc(100vh - var(--headH, 0));
   background-color: #84d6ff;
   overflow: hidden;
   z-index: 1;
@@ -58,23 +57,27 @@
     }
   }
   &-video {
+    pointer-events: none;
     position: absolute;
-    right: 5%;
+    left: 45%;
     bottom: 0;
     z-index: 1;
-    max-width: 100%;
-    max-height: 100%;
+    width: max-content;
+    max-width: 45%;
+    height: 100%;
     background-color: transparent;
+    &::-webkit-media-controls {
+      display: none;
+    }
   }
   &-background {
     position: absolute;
-    right: 5%;
+    left: 50%;
     bottom: 50%;
     transform: translateY(50%);
     z-index: 1;
-    width: 50%;
-    max-height: max-content;
-    max-width: 60%;
+    width: max-content;
+    max-width: 45%;
     height: 100%;
     background-color: transparent;
     .background {
@@ -127,13 +130,14 @@
 @include max(1024px) {
   .hero {
     min-height: 0;
-    padding: 12rem 0;
     &-video {
       right: 2.4rem;
+      left: unset;
       max-width: 60%;
     }
     &-background {
       right: 2.4rem;
+      left: unset;
       bottom: 0;
       transform: none;
       .logo {
@@ -153,7 +157,7 @@
 @include max(768px) {
   .hero {
     align-items: flex-start;
-    padding-bottom: 48rem;
+    padding-bottom: 50rem;
     &-title {
       br {
         display: none;
@@ -163,6 +167,7 @@
     &-video {
       right: 50%;
       transform: translateX(50%);
+      height: auto;
       width: 48rem;
       max-width: 100%;
     }
@@ -204,6 +209,6 @@
 }
 @include max(480px) {
   .hero {
-    padding-bottom: 100%;
+    padding-bottom: calc(100% + 2.4rem);
   }
 }

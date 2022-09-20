@@ -77,22 +77,6 @@ while (have_posts()) :
         </div>
     </div>
 
-    <div class="blog-detail-social">
-        <ul>
-            <?php
-
-            foreach ($array_share as $key => $item) {
-                $s_url = $item['url'];
-                $s_icon = $item['icon'];
-            ?>
-                <li>
-                    <a target="_blank" href="<?= $s_url ?>">
-                        <img src="<?= $s_icon ?>" alt="" />
-                    </a>
-                </li>
-            <?php } ?>
-        </ul>
-    </div>
 
     <div class="blog-detail-intro section-pri">
         <div class="container">
@@ -139,6 +123,24 @@ while (have_posts()) :
             <div class="col-8">
                 <div class="align-content">
                     <?php the_content(); ?>
+                </div>
+
+
+                <div class="blog-detail-social">
+                    <ul>
+                        <?php
+
+                        foreach ($array_share as $key => $item) {
+                            $s_url = $item['url'];
+                            $s_icon = $item['icon'];
+                        ?>
+                            <li>
+                                <a target="_blank" href="<?= $s_url ?>">
+                                    <img src="<?= $s_icon ?>" alt="" />
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
             <div class="decor-box"></div>
@@ -203,7 +205,7 @@ while (have_posts()) :
             <div class="col-10">
                 <h2 class="title-h4 newsletter-title">Latest news delivered right to your inbox</h2>
 
-                <?php echo do_shortcode('[contact-form-7 id="7923" title="Subscribe form"]') ?>
+                <?php echo do_shortcode('[contact-form-7 id="9759" title="Subscribe form"]') ?>
 
                 <div class="decor-box"></div>
             </div>

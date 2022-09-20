@@ -32,6 +32,8 @@ $title1 = get_field('title');
 $num = get_field('item_number');
 $type = get_field('post_type');
 
+$readmore_url = get_category_link($type);
+
 $post = wp_get_recent_posts(array(
   'numberposts' => $num,
   'category__in' => array($type),
@@ -47,9 +49,12 @@ $post = wp_get_recent_posts(array(
 
 <section class="explore section-pri">
   <div class="container">
-    <h2 class="explore-title title-h1">
-      <?= $title1 ?>
-    </h2>
+    <div class="explore-head">
+      <h2 class="explore-title title-h1">
+        <?= $title1 ?>
+      </h2>
+      <a class="explore-more" href="<?= $readmore_url ?>">See more post</a>
+    </div>
     <div class="swiper-default">
       <div class="swiper-container">
         <div class="swiper-wrapper">

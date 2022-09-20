@@ -5,7 +5,6 @@
   @DEFINE DIR
  **/
 
-
 define('THEME_URL', get_stylesheet_directory());
 define('THEME_DIC',  get_stylesheet_directory_uri());
 define('CORE', THEME_URL . '/core');
@@ -23,7 +22,7 @@ require_once(CORE . '/init.php');
 
 
 /**
-  @ Define align theme setup funtion
+ @ Define align theme setup funtion
  **/
 if (!function_exists('alignvn_theme_setup')) {
   function alignvn_theme_setup()
@@ -43,6 +42,7 @@ if (!function_exists('alignvn_theme_setup')) {
 
   add_action('init', 'alignvn_theme_setup');
 }
+require_once(CORE . '/customizer.php');
 
 
 function align_register_menu()
@@ -601,7 +601,7 @@ function custom_post_type()
     'capability_type'     => 'post',
     'show_in_rest' => true,
     'rewrite' => array(
-      'slug' => 'integration',
+      'slug' => 'integrations',
       'with_front' => true
     ),
 
@@ -1216,6 +1216,13 @@ class Align_Walker_Nav_Menu extends Walker_Nav_Menu
   }
 }
 
+
+function disable_update_plugin($value)
+{
+  unset($value->response['megamenu/megamenu.php']);
+  return $value;
+}
+add_filter('site_transient_update_plugins', 'disable_update_plugin');
 
 // --------------------- //
 flush_rewrite_rules(false);

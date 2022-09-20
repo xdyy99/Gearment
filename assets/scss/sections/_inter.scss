@@ -5,7 +5,7 @@
   z-index: 1;
   &-title {
     text-align: center;
-    margin-bottom: 18rem;
+    margin-bottom: 8rem;
   }
   &-txt {
     margin-bottom: 3rem;
@@ -139,7 +139,7 @@
 @include max(1440px) {
   .inter {
     &-title {
-      margin-bottom: 6rem;
+      margin-bottom: 4rem;
     }
     .decor-box {
       opacity: 0.3;

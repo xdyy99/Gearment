@@ -32,8 +32,8 @@
 ?>
 
 <!-- HTML template  -->
-<div class="contact-form" id="align-contact-form">
+<div class="contact-form" id="contact-form">
   <div class="container">
-    <?php echo do_shortcode('[contact-form-7 id="8265" title="Contact form"]'); ?>
+    <?php echo do_shortcode('[contact-form-7 id="9758" title="Contact form"]'); ?>
   </div>
 </div>

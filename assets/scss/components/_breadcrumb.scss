@@ -1,13 +1,14 @@
 .breadcrumb {
   font-size: 1.6rem;
-  color: rgba(170, 170, 170, 1);
+  // color: rgba(170, 170, 170, 1);
+  color: $c-pri;
   margin-bottom: 2rem;
   a {
     &:last-child {
       color: $c-pri;
     }
     @include hover() {
-      color: $c-pri;
+      text-decoration: underline;
     }
   }
 }

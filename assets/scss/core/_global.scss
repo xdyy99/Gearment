@@ -60,7 +60,10 @@
   padding: 0 2.4rem;
   width: 95%;
   max-width: 165.6rem;
-  @include max(1280px) {
+  @include max(1024px) {
+    width: 100%;
+  }
+  @include max(1024px) {
     width: 100%;
   }
 }

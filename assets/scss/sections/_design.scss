@@ -1,6 +1,7 @@
 .design {
   position: relative;
   z-index: 1;
+  padding-bottom: 0;
   overflow: hidden;
   &-wrap {
     display: flex;
@@ -34,8 +35,7 @@
     }
   }
   .decor-box {
-    background-color: $c-blu2;
-    @include vwbox(144);
+    display: none;
   }
 }
 .drag {

@@ -2,13 +2,14 @@
 /**
  * Template Name: Blog List Page
  */
+global $post;
 while (have_posts()) :
   the_post();
 
   $b_title = get_field('blog_title');
   $b_txt = get_field('blog_text');
 
-  $post = wp_get_recent_posts(array(
+  $post1 = wp_get_recent_posts(array(
     'numberposts' => 1,
     'orderby'          => 'post_date',
     'order'            => 'DESC',
@@ -70,7 +71,7 @@ while (have_posts()) :
         <div class="blog-txt"><?= $b_txt ?></div>
       </div>
     </div>
-    <?php foreach ($post as $key => $value) :
+    <?php foreach ($post1 as $key => $value) :
       $title2 = $value['post_title'];
       $url = get_permalink($value['ID']);
       $txt = $value['post_excerpt'];

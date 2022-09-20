@@ -3,14 +3,13 @@ get_header();
 
 global $wp_query;
 $categories = get_the_category();
-$category_id = $categories[0]->cat_ID;
 $tag = get_queried_object();
-$title = $tag->slug;
 $tag_id = $tag->term_id;
+
+$title = $tag->slug;
 
 $post = wp_get_recent_posts(array(
     'numberposts' => 1,
-    'category__in' => array($category_id),
     'orderby'          => 'post_date',
     'order'            => 'DESC',
     'post_type'        => 'post',
@@ -18,25 +17,6 @@ $post = wp_get_recent_posts(array(
     'tag_id'            => $tag_id,
 ));
 
-
-$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-
-$offset = ($paged - 1) * 9;
-// WP_Query arguments
-
-$args = array(
-    'posts_per_page' => 9,
-    'category__in' => array($category_id),
-    'orderby'          => 'post_date',
-    'order'            => 'DESC',
-    'post_type'        => 'post',
-    'post_status'      => 'publish',
-    'offset' => $offset,
-    'paged' => $paged,
-    'tag_id'            => $tag_id,
-);
-
-$wp_query1 = new WP_Query($args);
 
 
 ?>
@@ -54,7 +34,6 @@ $wp_query1 = new WP_Query($args);
 </div>
 <div class="blog-menu">
     <div class="container">
-
         <div class="blog-menu-wrap">
             <?php
             wp_nav_menu(array(
@@ -80,7 +59,6 @@ $wp_query1 = new WP_Query($args);
                     <!-- <input style="display:none;" type="checkbox" name="type" value="product" checked /> -->
                     <div class="catalog-search-wrap">
                         <input type="search" name="s" class="rs-form catalog-search-inp" placeholder="Search our blogs" />
-                        <img class="catalog-search-icon" src="<?php echo ASSETS . '/images/search-ic.svg'; ?>" alt="" />
                     </div>
                 </form>
             </div>
@@ -127,7 +105,8 @@ $wp_query1 = new WP_Query($args);
         <div class="blog-list-wrap">
 
             <?php
-            while ($wp_query1->have_posts()) : $wp_query1->the_post();
+            while (have_posts()) :
+                the_post();
             ?>
                 <div class="col-4">
                     <div class="explore-item">
@@ -147,13 +126,12 @@ $wp_query1 = new WP_Query($args);
                 </div>
             <?php
             endwhile;
-            wp_reset_postdata();
             ?>
 
         </div>
         <div class="pagination">
             <?php
-            align_pagination($wp_query1);
+            align_pagination();
             ?>
         </div>
 

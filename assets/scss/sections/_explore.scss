@@ -8,8 +8,20 @@
       padding-top: 50%;
     }
   }
-  &-title {
+  &-head {
     margin-bottom: 6rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  &-title {
+    max-width: 75%;
+  }
+  &-more {
+    @include fz(20);
+    @include hover() {
+      text-decoration: underline;
+    }
   }
   &-item {
     display: block;
@@ -60,9 +72,6 @@
 }
 @include max(1440px) {
   .explore {
-    &-title {
-      margin-bottom: 6rem;
-    }
     &-txt {
       padding: 2rem 2rem 1.8rem;
     }
@@ -70,11 +79,11 @@
 }
 @include max(1024px) {
   .explore {
-    &-title {
-      margin-bottom: 4.8rem;
-    }
     &-txt {
       padding: 1.2rem 2rem 1rem;
+    }
+    &-head {
+      margin-bottom: 4.8rem;
     }
     &-item {
       &-img {
@@ -91,6 +100,9 @@
     .swiper-slide {
       width: 50%;
     }
+    &-head {
+      margin-bottom: 3rem;
+    }
     &-item {
       &-img {
         margin-bottom: 1rem;
@@ -100,8 +112,11 @@
 }
 @include max(480px) {
   .explore {
+    &-head {
+      display: block;
+    }
     &-title {
-      margin-bottom: 2.4rem;
+      margin-bottom: 1rem;
       br {
         display: none;
       }

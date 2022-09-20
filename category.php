@@ -3,8 +3,9 @@ get_header();
 
 global $wp_query;
 $categories = get_the_category();
-$category_id = $categories[0]->cat_ID;
-$title = $categories[0]->name;
+$category_id = end($categories)->cat_ID;
+
+$title = end($categories)->name;
 $post = wp_get_recent_posts(array(
     'numberposts' => 1,
     'category__in' => array($category_id),
@@ -25,25 +26,6 @@ $popular = wp_get_recent_posts(array(
     'post_status'      => 'publish',
 ));
 
-$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-
-$offset = ($paged - 1) * 9;
-// WP_Query arguments
-
-$args = array(
-    'posts_per_page' => 9,
-    'category__in' => array($category_id),
-    'orderby'          => 'post_date',
-    'order'            => 'DESC',
-    'post_type'        => 'post',
-    'post_status'      => 'publish',
-    'offset' => $offset,
-    'paged' => $paged
-);
-
-$wp_query1 = new WP_Query($args);
-
-
 ?>
 <div class="blog-ser  blog-mobile">
     <div class="blog-ser-wrap">
@@ -58,6 +40,7 @@ $wp_query1 = new WP_Query($args);
     </div>
 </div>
 <div class="blog-menu">
+
     <div class="container">
 
         <div class="blog-menu-wrap">
@@ -173,7 +156,8 @@ $wp_query1 = new WP_Query($args);
         <div class="blog-list-wrap">
 
             <?php
-            while ($wp_query1->have_posts()) : $wp_query1->the_post();
+            while (have_posts()) :
+                the_post();
             ?>
                 <div class="col-4">
                     <div class="explore-item">
@@ -193,13 +177,12 @@ $wp_query1 = new WP_Query($args);
                 </div>
             <?php
             endwhile;
-            wp_reset_postdata();
             ?>
 
         </div>
         <div class="pagination">
             <?php
-            align_pagination($wp_query1);
+            align_pagination();
             ?>
         </div>
 

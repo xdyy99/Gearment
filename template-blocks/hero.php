@@ -45,7 +45,7 @@ $bgf = get_field('background_full');
 ?>
 
 <!-- HTML template  -->
-<div class="hero section-pri <?php if ($bgf) echo 'full' ?>" <?php if ($bg) echo 'style="background-color:rgba(201, 233, 253, 1)"'  ?> <?php if ($bgf) echo 'style="background-image:url(' . $bgf . ')"' ?>>
+<div class="hero section-sec <?php if ($bgf) echo 'full' ?>" <?php if ($bg) echo 'style="background-color:rgba(201, 233, 253, 1)"'  ?> <?php if ($bgf) echo 'style="background-image:url(' . $bgf . ')"' ?>>
 
   <div class="container">
 
@@ -70,7 +70,11 @@ $bgf = get_field('background_full');
 
 
       <?php if ($btn1_txt) : ?>
-        <a href="<?= $btn1_url; ?>" class="btn-pri"><?= $btn1_txt; ?></a>
+
+        <a href="<?php if ($btn1_url == "Signup") echo (get_theme_mod('align_signup'));
+                  else if ($btn1_url == "Login") echo (get_theme_mod('align_login'));
+                  else if ($btn1_url == "API") echo (get_theme_mod('align_api'));
+                  ?>" class="btn-pri"><?= $btn1_txt; ?></a>
       <?php endif; ?>
 
       <?php if ($btn2_txt) : ?>
@@ -80,25 +84,25 @@ $bgf = get_field('background_full');
     </div>
   </div>
 
-  <?php if ($vid) :
-    function get_browser_name($user_agent)
-    {
-      if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')) return true;
-      elseif (strpos($user_agent, 'Edge')) return true;
-      elseif (strpos($user_agent, 'Chrome')) return true;
-      elseif (strpos($user_agent, 'Safari')) return false;
-      elseif (strpos($user_agent, 'Firefox')) return true;
-      elseif (strpos($user_agent, 'MSIE') || strpos($user_agent, 'Trident/7')) return true;
 
-      return true;
-    }
-    $check_vid = get_browser_name($_SERVER['HTTP_USER_AGENT']);
-
-  ?>
-    <video class="hero-video" src=" <?php if ($check_vid) echo $vid;
-                                    else echo $vid_safari;   ?> " muted loop autoplay playsinline></video>
+  <?php if ($vid && !is_admin()) : ?>
+    <video class="hero-video" muted loop autoplay playsinline>
+      <source src="<?= $vid ?>" type="video/webm">
+      <source src="<?= $vid_safari ?>" type="video/mp4">
+    </video>
   <?php endif; ?>
-
+  <script>
+    var isSafari = window.safari !== undefined;
+    if (isSafari) {
+      console.log('This is safari on desktop');
+      let heroVideo = document.querySelectorAll('.hero-video');
+      heroVideo.forEach((el) => {
+        let source = el.querySelectorAll('source');
+        el.type = source[1].type;
+        el.src = source[1].src;
+      });
+    }
+  </script>
   <div class="hero-background">
     <?php if ($bg) : ?>
       <img class="background" src="<?= $bg; ?>" alt="" />

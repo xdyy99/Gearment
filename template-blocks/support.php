@@ -33,6 +33,6 @@
 <!-- HTML template  -->
 <div class="contact-form" id="align-contact-form">
   <div class="container">
-    <?php echo do_shortcode('[contact-form-7 id="8266" title="Support Form"]'); ?>
+    <?php echo do_shortcode('[contact-form-7 id="9760" title="Support form"]'); ?>
   </div>
 </div>

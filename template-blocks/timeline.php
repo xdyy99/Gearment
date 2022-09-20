@@ -32,7 +32,7 @@ $list = get_field('list');
 
 ?>
 
-<section class="time">
+<section class="time section-pri">
   <div class="container">
     <div class="col-10">
       <h2 class="time-title title-h1"><?= $title ?></h2>

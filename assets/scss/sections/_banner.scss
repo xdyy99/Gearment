@@ -6,6 +6,9 @@
   z-index: 1;
   &-how {
     background-color: transparent;
+    .title-h1 {
+      text-align: center;
+    }
     .decor-box {
       display: none;
     }
@@ -44,6 +47,7 @@
 @include max(768px) {
   .banner {
     .title-h1 {
+      text-align: left;
       br {
         display: none;
       }

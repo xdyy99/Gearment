@@ -9,8 +9,22 @@ export default function map() {
         el.classList.add('active1');
         setTimeout(() => {
           el.classList.add('active2');
-        }, 300);
+        }, 700);
       }
+    });
+
+    let items = el.querySelectorAll('.map-item');
+    let lines = el.querySelectorAll('.map-line');
+
+    items.forEach((item, i) => {
+      item.addEventListener('mouseenter', () => {
+        lines[i].classList.add('active-hover');
+        el.classList.add('active-hover');
+      });
+      item.addEventListener('mouseleave', () => {
+        lines[i].classList.remove('active-hover');
+        el.classList.remove('active-hover');
+      });
     });
   });
 }

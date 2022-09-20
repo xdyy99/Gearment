@@ -32,7 +32,6 @@ $title2 = get_field('title_2');
 $title3 = get_field('title_3');
 //
 $btn1_txt = get_field('button1_text');
-$btn1_url = get_field('button1_url');
 //
 $btn2_txt = get_field('button2_text');
 $btn2_url = get_field('button2_url');
@@ -42,7 +41,7 @@ $bg = get_field('background');
 ?>
 
 <!-- HTML template  -->
-<section class="finan section-pri" style="background-image: url('<?= $bg ?>')">
+<section class="finan section-sec" style="background-image: url('<?= $bg ?>')">
   <div class="container">
     <div class="title-h2"> <?= $title1 ?></div>
     <h2 class="finan-title">
@@ -52,7 +51,7 @@ $bg = get_field('background');
     </h2>
 
     <?php if ($btn1_txt) : ?>
-      <a href="<?= $btn1_url; ?>" class="btn-pri"><?= $btn1_txt; ?></a>
+      <a href="<?php echo (get_theme_mod('align_signup')) ?>" class="btn-pri"><?= $btn1_txt; ?></a>
     <?php endif; ?>
 
     <?php if ($btn2_txt) : ?>

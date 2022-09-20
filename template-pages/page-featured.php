@@ -31,6 +31,7 @@ while (have_posts()) :
     elseif ($fil == '1') :
         $args = array(
             'posts_per_page' => 9,
+            'tag_id' => 105,
             'orderby'          => 'post_date',
             'order'            => 'DESC',
             'post_type'        => 'product',
@@ -41,8 +42,8 @@ while (have_posts()) :
     elseif ($fil == '2') :
         $args = array(
             'posts_per_page' => 9,
-            'meta_key'       => 'postview_number',
-            'orderby'          => 'meta_value_num',
+            'tag_id' => 104,
+            'orderby'          => 'post_date',
             'order'            => 'DESC',
             'post_type'        => 'product',
             'post_status'      => 'publish',
@@ -62,7 +63,7 @@ while (have_posts()) :
                 <!-- <input style="display:none;" type="checkbox" name="type" value="post" checked /> -->
                 <input style="display:none;" type="checkbox" name="type" value="product" checked />
                 <div class="catalog-search-wrap">
-                    <input type="search" name="s" class="rs-form catalog-search-inp" placeholder="Search for products, brands, categories" />
+                    <input type="search" name="s" class="rs-form catalog-search-inp" placeholder="Search for product names or SKU" />
                     <img class="catalog-search-icon" src="<?php echo ASSETS . '/images/search-ic.svg'; ?>" alt="" />
                 </div>
             </form>
@@ -78,7 +79,7 @@ while (have_posts()) :
         <div class="container">
             <div class="catalog-banner-wrap">
                 <div class="col-5">
-                    <h1 class="catalog-banner-title title-h1"> <? echo the_title() ?></h1>
+                    <h1 class="catalog-banner-title title-h1"> <?= the_title() ?></h1>
                     <div class="catalog-banner-txt">
                         <?= $txt ?>
                     </div>
@@ -98,10 +99,6 @@ while (have_posts()) :
             <div class="catalog-list-wrap">
                 <?php
                 while ($wp_query1->have_posts()) : $wp_query1->the_post();
-                    $today_obj      = new DateTime(date('Y-m-d', strtotime('today')));            // Get today's Date Object
-                    $register_date  = get_the_author_meta('user_registered', get_current_user_id());  // Grab the registration Date
-                    $registered_obj = new DateTime(date('Y-m-d', strtotime($register_date)));     // Get the registration Date Object
-                    $interval_obj   = $today_obj->diff($registered_obj);
                 ?>
 
                     <div class="col-4 ">
@@ -113,18 +110,21 @@ while (have_posts()) :
                                 ?>
                                 <img src="<?php echo $image; ?>" alt="" />
 
-                                <?php
-
-                                if ($interval_obj->days < 30) : ?>
+                                <?php if ($fil == '1') { ?>
                                     <span class="img-tag">New</span>
-                                <?php endif; ?>
+                                <?php } elseif ($fil == '2') { ?>
+                                    <span class="img-tag">Best selling</span>
+                                <?php }  ?>
 
 
                             </a>
                             <a href="<?= get_permalink() ?>" class="title"> <?= get_the_title(); ?></a>
                             <div class="name">By <?php echo $p0 = get_field('product_brand'); ?></div>
                             <div class="price-big">From USD <?php echo $p1 = get_field('product_price'); ?></div>
-                            <div class="price-small">From USD <?php echo $p2 = get_field('product_price_premium'); ?> with Premium Plan</div>
+
+                            <?php if (get_theme_mod('align_plan_activate')) { ?>
+                                <div class="price-small">From USD <?php echo $p2 = get_field('product_price_premium'); ?> with <?php echo get_theme_mod('align_plan_name'); ?></div>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php

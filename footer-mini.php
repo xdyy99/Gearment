@@ -42,16 +42,46 @@
 <style>
   #fc_frame,
   #fc_frame.fc-widget-small {
-    width: 6rem;
+    width: 60px;
     bottom: 9rem;
     left: unset;
     right: 2rem;
     z-index: 5;
   }
 
+  #fc_frame.fc-open,
+  #fc_frame.fc-widget-small.fc-open {
+    z-index: 21;
+  }
+
   .betterdocs-widget-container {
-    bottom: 17rem;
-    z-index: 4;
+    bottom: 3rem;
+    z-index: 5;
+  }
+
+  .betterdocs-launcher[type="button"].betterdocs-launcher {
+    margin: 0 !important;
+  }
+
+  .betterdocs-widget-container.betterdocs-opened {
+    z-index: 21;
+  }
+
+  #fc_frame.h-open-container,
+  #fc_frame.fc-widget-small.h-open-container {
+    max-height: 80vh;
+  }
+
+  @media screen and (max-width: 800px) {
+    .betterdocs-launcher[type="button"].betterdocs-launcher {
+      margin: 0 1rem 1rem !important;
+    }
+
+    .betterdocs-launcher[type="button"].betterdocs-launcher {
+      width: 50px;
+      height: 50px;
+    }
+
   }
 </style>
 <script>

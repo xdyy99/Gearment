@@ -41,7 +41,7 @@ $btn_url = get_field('button_url');
   <div class="container">
     <div class="video-wrap">
       <div class="video-inner">
-        <video class="videoPlay" src="<?= $url; ?>" controls muted></video>
+        <video class="videoPlay" src="<?= $url; ?>" controls muted playsinline></video>
         <div class="video-overlay" style="background-image: url('<?= $bg; ?>')">
           <div class="video-icon"></div>
           <h2 class="video-title">
@@ -51,7 +51,7 @@ $btn_url = get_field('button_url');
       </div>
     </div>
     <?php if ($btn_txt) : ?>
-      <a href="<?= $btn_url; ?>" class="btn-pri"><?= $btn_txt; ?></a>
+      <a href="<?php echo (get_theme_mod('align_login')) ?>" class="btn-pri"><?= $btn_txt; ?></a>
     <?php endif; ?>
   </div>
 

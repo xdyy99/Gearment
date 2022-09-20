@@ -36,11 +36,8 @@ $title3 = get_field('title3');
 $title4 = get_field('title4');
 $title5 = get_field('title5');
 //
-$list1 = get_field('list');
-$list2 = get_field('list2');
-$list3 = get_field('list3');
-$list4 = get_field('list4');
-$list5 = get_field('list5');
+
+$terms = get_terms('doc_category', 'orderby=none&hide_empty');
 
 ?>
 
@@ -55,32 +52,31 @@ $list5 = get_field('list5');
         <div class="help-intro-col">
           <a class="help-intro-item tabBtn">
             <img src="<?php echo ASSETS . '/images/hi-1.svg'; ?>" alt="" />
-            Products & Orders
+            <?= $terms[0]->name ?>
           </a>
         </div>
         <div class="help-intro-col">
           <a class="help-intro-item tabBtn">
             <img src="<?php echo ASSETS . '/images/hi-2.svg'; ?>" alt="" />
-            Shipping Information
+            <?= $terms[1]->name ?>
           </a>
         </div>
         <div class="help-intro-col">
           <a class="help-intro-item tabBtn">
             <img src="<?php echo ASSETS . '/images/hi-3.svg'; ?>" alt="" />
-            Replacements & <br />
-            Refunds Policies
+            <?= $terms[2]->name ?>
           </a>
         </div>
         <div class="help-intro-col">
           <a class="help-intro-item tabBtn">
             <img src="<?php echo ASSETS . '/images/hi-4.svg'; ?>" alt="" />
-            Manage Your Account
+            <?= $terms[3]->name ?>
           </a>
         </div>
         <div class="help-intro-col">
           <a class="help-intro-item tabBtn">
             <img src="<?php echo ASSETS . '/images/hi-5.svg'; ?>" alt="" />
-            Other issue
+            <?= $terms[4]->name ?>
           </a>
         </div>
 
@@ -90,9 +86,27 @@ $list5 = get_field('list5');
             <div class="help-intro-list full">
               <ul>
 
-                <?php foreach ($list1 as $key => $value) :
-                  $txt = $value['text'];
-                  $url = $value['url'];
+                <?php
+                $list0 = get_posts(
+                  array(
+                    'posts_per_page'   => -1,
+                    'orderby'          => 'post_date',
+                    'order'            => 'ASC',
+                    'post_type'        => 'docs',
+                    'post_status'      => 'publish',
+                    'tax_query' => array(
+                      array(
+                        'taxonomy' => 'doc_category',
+                        'field' => $terms[0]->slug,
+                        'terms' => $terms[0]->term_id,
+                      )
+                    )
+                  )
+                );
+
+                foreach ($list0 as $key => $value) :
+                  $txt = $value->post_title;
+                  $url = $value->guid;
                 ?>
                   <li>
                     <a href="<?= $url ?>"> <?= $txt ?> </a>
@@ -106,9 +120,26 @@ $list5 = get_field('list5');
             <div class="help-intro-list full">
               <ul>
 
-                <?php foreach ($list2 as $key => $value) :
-                  $txt = $value['text'];
-                  $url = $value['url'];
+                <?php
+                $list1 = get_posts(
+                  array(
+                    'posts_per_page'   => -1,
+                    'orderby'          => 'post_date',
+                    'order'            => 'ASC',
+                    'post_type'        => 'docs',
+                    'post_status'      => 'publish',
+                    'tax_query' => array(
+                      array(
+                        'taxonomy' => 'doc_category',
+                        'field' => $terms[1]->slug,
+                        'terms' => $terms[1]->term_id,
+                      )
+                    )
+                  )
+                );
+                foreach ($list1 as $key => $value) :
+                  $txt = $value->post_title;
+                  $url = $value->guid;
                 ?>
                   <li>
                     <a href="<?= $url ?>"> <?= $txt ?> </a>
@@ -121,10 +152,26 @@ $list5 = get_field('list5');
             <h2 class="help-intro-title title-h3"><?= $title3 ?></h2>
             <div class="help-intro-list full">
               <ul>
-
-                <?php foreach ($list3 as $key => $value) :
-                  $txt = $value['text'];
-                  $url = $value['url'];
+                <?php
+                $list2 = get_posts(
+                  array(
+                    'posts_per_page'   => -1,
+                    'orderby'          => 'post_date',
+                    'order'            => 'ASC',
+                    'post_type'        => 'docs',
+                    'post_status'      => 'publish',
+                    'tax_query' => array(
+                      array(
+                        'taxonomy' => 'doc_category',
+                        'field' => $terms[2]->slug,
+                        'terms' => $terms[2]->term_id,
+                      )
+                    )
+                  )
+                );
+                foreach ($list2 as $key => $value) :
+                  $txt = $value->post_title;
+                  $url = $value->guid;
                 ?>
                   <li>
                     <a href="<?= $url ?>"> <?= $txt ?> </a>
@@ -138,9 +185,26 @@ $list5 = get_field('list5');
             <div class="help-intro-list full">
               <ul>
 
-                <?php foreach ($list4 as $key => $value) :
-                  $txt = $value['text'];
-                  $url = $value['url'];
+                <?php
+                $list3 = get_posts(
+                  array(
+                    'posts_per_page'   => -1,
+                    'orderby'          => 'post_date',
+                    'order'            => 'ASC',
+                    'post_type'        => 'docs',
+                    'post_status'      => 'publish',
+                    'tax_query' => array(
+                      array(
+                        'taxonomy' => 'doc_category',
+                        'field' => $terms[3]->slug,
+                        'terms' => $terms[3]->term_id,
+                      )
+                    )
+                  )
+                );
+                foreach ($list3 as $key => $value) :
+                  $txt = $value->post_title;
+                  $url = $value->guid;
                 ?>
                   <li>
                     <a href="<?= $url ?>"> <?= $txt ?> </a>
@@ -154,9 +218,26 @@ $list5 = get_field('list5');
             <div class="help-intro-list full">
               <ul>
 
-                <?php foreach ($list5 as $key => $value) :
-                  $txt = $value['text'];
-                  $url = $value['url'];
+                <?php
+                $list4 = get_posts(
+                  array(
+                    'posts_per_page'   => -1,
+                    'orderby'          => 'post_date',
+                    'order'            => 'ASC',
+                    'post_type'        => 'docs',
+                    'post_status'      => 'publish',
+                    'tax_query' => array(
+                      array(
+                        'taxonomy' => 'doc_category',
+                        'field' => $terms[4]->slug,
+                        'terms' => $terms[4]->term_id,
+                      )
+                    )
+                  )
+                );
+                foreach ($list4 as $key => $value) :
+                  $txt = $value->post_title;
+                  $url = $value->guid;
                 ?>
                   <li>
                     <a href="<?= $url ?>"> <?= $txt ?> </a>
